@@ -1,0 +1,15 @@
+package projekt;
+
+public class Alarm extends Packet{
+	public int channelNr;
+	public int threshold;
+	//public enum direction {
+		//ANY, DOWN, UP
+	//}
+	
+	public Alarm(String device, String description, long date, int channelNr, int threshold) {
+		super(device, description, date);
+		this.channelNr = channelNr;
+		this.threshold = threshold;
+	}
+}

@@ -1,0 +1,21 @@
+package projekt;
+
+public abstract class Sequence<T> extends Packet {
+	
+	protected int channelNr;
+	protected String unit;
+	protected double resolution;
+	protected T[] buffer;
+	
+	public Sequence(String device, String description, long date, int channelNr, String unit, double resolution, T[] buffer2){
+		super(device, description, date);
+		this.channelNr = channelNr;
+		this.unit = unit;
+		this.resolution = resolution;
+		this.buffer = buffer2;
+	}
+	
+	public String toString(){
+		return(super.toString() + '\n' + "Channel Number: " + channelNr + '\n' + "Unit: " + unit + '\n' + "Resolution: " + resolution + '\n' + "Buffer: " + buffer);
+	}
+}

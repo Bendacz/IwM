@@ -1,0 +1,10 @@
+package projekt;
+
+public class Main {
+
+public static void main(String[] args) {
+Sequence d = new Sequence("device", "description", 4343, 1);
+d.toString();
+System.out.println(d);
+}
+}

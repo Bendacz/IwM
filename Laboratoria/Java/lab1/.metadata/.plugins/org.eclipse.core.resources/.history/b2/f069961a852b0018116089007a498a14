@@ -1,0 +1,20 @@
+package projekt;
+
+public class Main {
+
+public static void main(String[] args) {
+TimeHistory a = new TimeHistory("First Device", "Short Description", 4343, 1, "Volt", 6.56, 1020, 7.77);
+TimeHistory b = new TimeHistory("Second Device", "Long Description", 101010, 2, "Ampere", 33.33, "String", 123.123);
+Spectrum c = new Spectrum("Third Device", "None", 23, 3, "Watt", 2.2, 5);
+Spectrum d = new Spectrum("Fourth Device", "Not Available", 32, 4, "[-]", 0.001, 2);
+Alarm e = new Alarm("Fifth Device", "Not Available", 32, 5, 1000);
+Alarm f = new Alarm("Sixth Device", "Unnecessary", 75, 6, 50);
+
+System.out.println(a.toString() + '\n');
+System.out.println(b.toString() + '\n');
+System.out.println(c.toString() + '\n');
+System.out.println(d.toString() + '\n');
+System.out.println(e.toString() + '\n');
+System.out.println(f.toString() + '\n');
+}
+}

@@ -1,0 +1,4 @@
+INDEX VERSION 1.130+D:\Studia\Semestry\VIII Semestr\Informatyka w Mechatronice\Laboratoria\.metadata\.plugins\org.eclipse.jdt.core
+2620941534.index
+642142379.index
+87111012.index

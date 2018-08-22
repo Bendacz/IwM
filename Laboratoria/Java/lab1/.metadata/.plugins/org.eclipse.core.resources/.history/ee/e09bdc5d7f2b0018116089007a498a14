@@ -1,0 +1,9 @@
+package projekt;
+
+public class Alarm extends Packet{
+	public int chanelNr;
+	public int threshold;
+	public enum direction{
+		
+	};
+}

@@ -1,0 +1,14 @@
+package projekt;
+
+public class Spectrum extends Sequence{
+	public int scaling;
+
+	public Spectrum(String device, String description, long date, int channelNr, String unit, double resolution, int scaling) {
+		super(device, description, date, channelNr, unit, resolution);
+		this.scaling = scaling;
+	}
+	
+	public String toString() {
+		return(super.toString() + '\n' + "Scalnig: " + scaling);
+	}
+}

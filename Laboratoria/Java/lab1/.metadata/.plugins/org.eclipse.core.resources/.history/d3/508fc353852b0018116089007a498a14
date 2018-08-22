@@ -1,0 +1,24 @@
+package projekt;
+
+public class TimeHistory<T extends Sequence<T>>{
+	public double sensivity;
+
+	public TimeHistory(String device, String description, long date, int channelNr, String unit, double resolution, T[] buffer, double sensivity){
+		super();
+		this.sensivity = sensivity;
+	}
+
+	public TimeHistory(String device, String description, int date, int channelNr, String unit, double resolution,
+			int i, double sensivity2) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public TimeHistory(String device, String description, int date, int channelNr, String unit, double resolution,
+			String string, double sensivity2) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public String toString(){
+		return(super.toString() + '\n' + "Sensivity: " + sensivity);
+	}
+}

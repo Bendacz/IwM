@@ -1,0 +1,10 @@
+package projekt;
+
+public class TimeHistory extends Sequence{
+public double sensivity;
+
+public String toString(int channelNr, String unit, double resolution, double sensivity){
+	
+	return(super(channelNr, unit, resolution); + sensivity);
+}
+}

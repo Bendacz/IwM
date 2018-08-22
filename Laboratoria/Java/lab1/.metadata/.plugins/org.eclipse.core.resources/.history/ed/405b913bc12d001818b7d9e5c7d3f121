@@ -1,0 +1,16 @@
+package projekt;
+
+import java.util.Arrays;
+
+public class TimeHistory extends Sequence{
+	public double sensivity;
+
+	public TimeHistory(String device, String description, long date, int channelNr, String unit, double resolution, Object[] buffer, double sensivity){
+		super(device, description, date, channelNr, unit, resolution, buffer);
+		this.sensivity = sensivity;
+	}
+
+	public String toString(){
+		return(super.toString() + "\nSensivity: " + sensivity);
+	}
+}

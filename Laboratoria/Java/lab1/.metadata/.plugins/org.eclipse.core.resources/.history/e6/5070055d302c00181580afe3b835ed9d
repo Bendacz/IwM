@@ -1,0 +1,68 @@
+package projekt;
+
+public class Main {
+/*
+public static void main(String[] args) {
+TimeHistory a = new TimeHistory("First Device", "Short Description", 4343, 1, "Volt", 6.56, "String", 7.77);
+TimeHistory b = new TimeHistory("Second Device", "Long Description", 101010, 2, "Ampere", 33.33, 43, 123.123);
+Spectrum c = new Spectrum("Third Device", "None", 23, 3, "Watt", 2.2, 6463, "Linear");
+Spectrum d = new Spectrum("Fourth Device", "Not Available", 32, 4, "[-]", 0.001, "What?", "Logarythmic");
+Alarm e = new Alarm("Fifth Device", "Not Available", 32, 5, 1000, 1);
+Alarm f = new Alarm("Sixth Device", "Unnecessary", 75, 6, 50, 0);
+
+System.out.println(a.toString() + '\n');
+System.out.println(b.toString() + '\n');
+System.out.println(c.toString() + '\n');
+System.out.println(d.toString() + '\n');
+System.out.println(e.toString() + '\n');
+System.out.println(f.toString() + '\n');
+}
+*/
+/*
+ * Java enum with constructor for example.
+ * Constructor accept one String argument action
+ */
+public enum TrafficSignal{
+    //this will call enum constructor with one String argument
+    RED("wait"), GREEN("go"), ORANGE("slow down");
+  
+    private String action;
+  
+    public String getAction(){
+        return this.action;
+    }
+  
+    // enum constructor - can not be public or protected
+    TrafficSignal(String action){
+        this.action = action;
+    }
+}
+
+/**
+ *
+ * Java Enum example with constructor. Java Enum can have constructor but can not
+ * be public or protected
+ *
+ * @author http://java67.blogspot.com
+ */
+//public class EnumConstructorExample{
+
+    public static void main(String args[]) {
+      
+      //let's print name of each enum and there action - Enum values() examples
+      TrafficSignal[] signals = TrafficSignal.values();
+    
+      for(TrafficSignal signal : signals){
+          //Java name example - Java getter method example
+          System.out.println("name : " + signal.name() + " action: " + signal.getAction());
+      } 
+    
+    } 
+  
+//}
+
+//Read more: http://www.java67.com/2012/11/java-enum-example-with-constructor.html#ixzz5AHlCx9iS
+
+
+
+}

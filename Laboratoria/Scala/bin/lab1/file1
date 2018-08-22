@@ -1,0 +1,2 @@
+Prostokat(3,8)
+def prostokat(row:Int , col:Int): Unit = for {i <- 1 to row} println("*"*col)

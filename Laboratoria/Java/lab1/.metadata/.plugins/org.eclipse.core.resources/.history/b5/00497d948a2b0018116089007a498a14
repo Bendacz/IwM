@@ -1,0 +1,24 @@
+package projekt;
+
+public class Spectrum<T> extends Sequence<Object>{
+	public String scaling;
+
+	public Spectrum(String device, String description, long date, int channelNr, String unit, double resolution, T[] buffer, int scaling) {
+		super(device, description, date, channelNr, unit, resolution, buffer);
+		this.scaling = scaling;
+		
+		switch(scaling) {
+		case "linear":
+			this.scaling = "Linear";
+			break;
+		case 0:
+			this.direction = "Logarythmic";
+			break;
+	}
+	}
+	
+
+	public String toString() {
+		return(super.toString() + '\n' + "Scalnig: " + scaling);
+	}
+}

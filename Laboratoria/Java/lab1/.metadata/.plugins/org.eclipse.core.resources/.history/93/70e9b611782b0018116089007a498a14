@@ -1,0 +1,18 @@
+package projekt;
+
+public abstract class Packet {
+protected String device = "dev";
+protected String description = "desc";
+protected long date = 444;
+
+public Packet(String device, String description, long date) {
+	this.device = device;
+	this.description = description;
+	this.date = date;
+	System.out.println("costam");
+}
+
+public String toString(String device, String description, long date) {
+	return(device + description + date);
+}
+}

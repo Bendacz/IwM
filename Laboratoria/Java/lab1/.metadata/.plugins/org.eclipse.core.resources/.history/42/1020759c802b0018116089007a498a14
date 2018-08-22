@@ -1,0 +1,13 @@
+package projekt;
+
+public class Main {
+
+public static void main(String[] args) {
+TimeHistory a = new TimeHistory("first device", "short description", 4343, 1, "Volt", 6.56, 7.77);
+TimeHistory b = new TimeHistory("second device", "long description", 101010, 2, "Ampere", 33.33, 123.123);
+Spectrum c = new Spectrum("third device", "none", 23, 3, "Watt", 2.2, 5)
+//d.toString();
+System.out.println(a.toString() + '\n');
+System.out.println(b.toString() + '\n');
+}
+}

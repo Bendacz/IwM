@@ -1,0 +1,10 @@
+package projekt;
+
+public class Main {
+
+public static void main(String[] args) {
+TimeHistory d = new TimeHistory();
+String str = d.toString(5555);
+System.out.println(str);
+}
+}

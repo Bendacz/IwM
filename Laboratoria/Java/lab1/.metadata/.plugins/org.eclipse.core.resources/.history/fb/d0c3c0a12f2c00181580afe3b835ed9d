@@ -1,0 +1,48 @@
+package projekt;
+
+public class Alarm extends Packet{
+	public int channelNr;
+	public int threshold;
+	public int n;
+	public enum direction{
+	    //this will call enum constructor with one String argument
+	    ANY("-1"), GREEN("go"), ORANGE("slow down");
+	  
+	    private String action;
+	  
+	    public String getAction(){
+	        return this.action;
+	    }
+	  
+	    // enum constructor - can not be public or protected
+	    direction(String action){
+	        this.action = action;
+	    }
+	}
+	
+	public Alarm(String device, String description, long date, int channelNr, int threshold, String action) {
+		super(device, description, date);
+		this.channelNr = channelNr;
+		this.threshold = threshold;
+		
+		switch(n) {
+			case -1:
+				this.direction = "Down";
+				break;
+			case 0:
+				this.direction = "Any";
+				break;
+			case 1:
+				this.direction = "Up";
+				break;
+			default:
+				this.direction = "Wrong parameter";
+		}
+	}
+	
+	
+	
+	public String toString() {
+		return(super.toString() + "\nChannel: " + channelNr + "\nThreshold: " + threshold + "\nDirection: " + direction);
+	}
+}
