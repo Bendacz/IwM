@@ -1,0 +1,3 @@
+.table-view-cell:odd{
+	-fx-background-color: #bfff00;
+}

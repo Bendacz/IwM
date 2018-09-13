@@ -1,0 +1,61 @@
+package networking.rmi.api;
+
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+import java.util.List;
+
+public interface Service extends Remote {
+	Person insertPerson(Person person) throws RemoteException;
+	void updatePerson(Person person) throws RemoteException;
+	void deletePerson(Long id) throws RemoteException;
+	Person getPersonById(Long id) throws RemoteException;
+	List<Person> getAllPerson() throws RemoteException;
+
+	PersonalData insertPersonalData(PersonalData pd) throws RemoteException;
+	void updatePersonalData(PersonalData pd) throws RemoteException;
+	void deletePersonalData(Long id) throws RemoteException;
+	PersonalData getPersonalDataById(Long id) throws RemoteException;
+	List<PersonalData> getAllPersonalData() throws RemoteException;
+
+	WeekTimetable insertWeekTimetable(WeekTimetable wt) throws RemoteException;
+	void updateWeekTimetable(WeekTimetable wt) throws RemoteException;
+	void deleteWeekTimetable(Long id) throws RemoteException;
+	PersonalData getWeekTimetableById(Long id) throws RemoteException;
+	List<PersonalData> getAllWeekTimetable() throws RemoteException;
+
+	Program insertProgram(Program prog) throws RemoteException;
+	void updateProgram(Program prog) throws RemoteException;
+	void deleteProgram(Long id) throws RemoteException;
+	PersonalData getProgramById(Long id) throws RemoteException;
+	List<PersonalData> getAllProgram() throws RemoteException;
+
+	Program insertBooks(Books b) throws RemoteException;
+	void updateBooks(Books b) throws RemoteException;
+	void deleteBooks(Long id) throws RemoteException;
+	PersonalData getBooksById(Long id) throws RemoteException;
+	List<PersonalData> getAllBooks() throws RemoteException;
+
+	Program insertSubjects(Subjects s) throws RemoteException;
+	void updateSubjects(Subjects s) throws RemoteException;
+	void deleteSubjects(Long id) throws RemoteException;
+	PersonalData getSubjectsById(Long id) throws RemoteException;
+	List<PersonalData> getAllSubjects() throws RemoteException;
+
+	Program insertTrips(Trips t) throws RemoteException;
+	void updateTrips(Trips t) throws RemoteException;
+	void deleteTrips(Long id) throws RemoteException;
+	PersonalData getTripsById(Long id) throws RemoteException;
+	List<PersonalData> getAllTrips() throws RemoteException;
+
+	Program insertEvents(Events e) throws RemoteException;
+	void updateEvents(Trips e) throws RemoteException;
+	void deleteEvents(Long id) throws RemoteException;
+	PersonalData getEventsById(Long id) throws RemoteException;
+	List<PersonalData> getAllEvents() throws RemoteException;
+
+	Program insertAdditionalBehaviour(AdditionalBehaviour ab) throws RemoteException;
+	void updateAdditionalBehaviour(AdditionalBehaviour ab) throws RemoteException;
+	void deleteAdditionalBehaviour(Long id) throws RemoteException;
+	PersonalData getAdditionalBehaviourById(Long id) throws RemoteException;
+	List<PersonalData> getAllAdditionalBehaviour() throws RemoteException;
+}

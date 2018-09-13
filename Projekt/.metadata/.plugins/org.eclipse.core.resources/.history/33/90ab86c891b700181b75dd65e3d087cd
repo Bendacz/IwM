@@ -1,0 +1,166 @@
+package networking.rmi.client;
+
+import java.io.IOException;
+import java.net.URL;
+import java.rmi.RemoteException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import networking.rmi.api.Accounts;
+import networking.rmi.api.Person;
+import networking.rmi.api.Service;
+import networking.rmi.server.DatabaseConnection;
+
+public class LoginFormController implements Initializable{
+
+	@FXML private TextField txtLogin;
+	@FXML private PasswordField txtPassword;
+	@FXML private RadioButton rbAdmin;
+	@FXML private RadioButton rbUser;
+	@FXML private Label txtLabel;
+	private RMIClient main;
+	private Service personService;
+
+    public void loginAction(ActionEvent event){
+
+		String errorMessage = "";
+
+    	if(txtLogin.getText() == null || txtLogin.getText().isEmpty()) {
+			errorMessage += "Nieprawid³owo wype³nione pole: login!\n";
+		}
+
+    	if(txtPassword.getText() == null || txtPassword.getText().isEmpty()) {
+			errorMessage += "Nieprawid³owo wype³nione pole: login!\n";
+		}
+
+		if(errorMessage.length() == 0) {
+			try {
+				Accounts a = new Accounts();
+				a.setLogin(txtLogin.getText());
+				a.setPassword(txtPassword.getText());
+
+				String role = personService.accountLogin(a);
+
+	            if(role.equals("admin")){
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminMenu.fxml"));
+					Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+					Parent root;
+					try {
+						root = loader.load();
+
+						AdminMenuController controller = loader.getController();
+						controller.setMain(main,this);
+						stage.setScene(new Scene(root));
+					} catch (IOException ex) {
+						ex.printStackTrace();
+					}
+	            }else if (role.equals("user")){
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminMenu.fxml"));
+					Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+					Parent root;
+					try {
+						root = loader.load();
+
+						AdminMenuController controller = loader.getController();
+						controller.setMain(main,this);
+						stage.setScene(new Scene(root));
+					} catch (IOException ex) {
+						ex.printStackTrace();
+					}
+	            } else {
+	                Alert alert = new Alert(Alert.AlertType.ERROR);
+	                alert.initModality(Modality.APPLICATION_MODAL);
+	                alert.setTitle("Error!");
+	                alert.setHeaderText("B³¹d!");
+	                alert.setContentText("B³¹d w bazie danych dotycz¹cych kont!\nSkontaktuj siê z administratorem bazy danych!");
+	                alert.showAndWait();
+	            }
+
+				//tableView.getItems().add(person);
+
+				//clearField();
+
+			} catch (RemoteException ex) {
+				ex.printStackTrace();
+			}
+		} else {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.initModality(Modality.APPLICATION_MODAL);
+			alert.setTitle("Nieprawid³owo wype³nione pola!");
+			alert.setHeaderText("Proszê poprawiæ nieprawid³owo wype³nione pola!");
+			alert.setContentText(errorMessage);
+			alert.showAndWait();
+		}
+
+
+        /*PreparedStatement preparedStatement = null;
+
+        String login = txtLogin.getText().toString();
+        String password = txtPassword.getText().toString();
+
+        String sql = "select * from accounts where account_login = ? and account_password = ?";
+
+        try{
+			preparedStatement = DatabaseConnection.getConnection().prepareStatement(sql);
+            preparedStatement.setString(1, login);
+            preparedStatement.setString(2, password);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(!resultSet.next()){
+                infoBox("Please enter correct Email and Password", null, "Failed");
+            }else{
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminMenu.fxml"));
+				Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+				Parent root;
+				try {
+					root = loader.load();
+
+					AdminMenuController controller = loader.getController();
+					controller.setMain(main,this);
+					stage.setScene(new Scene(root));
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }*/
+    }
+
+
+    public static void infoBox(String infoMessage, String headerText, String title){
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setContentText(infoMessage);
+        alert.setTitle(title);
+        alert.setHeaderText(headerText);
+        alert.showAndWait();
+    }
+
+	@Override
+	public void initialize(URL url, ResourceBundle rb) {
+	}
+
+	public void setMain(RMIClient main) {
+		this.main = main;
+		this.personService = main.getPersonService();
+	}
+
+	public String getAdminLogin() {
+		return txtLogin.getText().toString();
+	}
+}

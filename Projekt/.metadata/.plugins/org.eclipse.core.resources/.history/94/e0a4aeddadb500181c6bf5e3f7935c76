@@ -1,0 +1,160 @@
+package networking.rmi.api;
+
+import java.io.Externalizable;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import java.time.LocalDate;
+
+import javafx.beans.property.LongProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleLongProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
+public class PersonalData implements Externalizable{
+	//private final LongProperty personalData_id = new SimpleLongProperty();
+	private final LongProperty personalData_registeration_number = new SimpleLongProperty();
+	private final StringProperty personalData_student_name = new SimpleStringProperty();
+	private final ObjectProperty<LocalDate> personalData_birth_date = new SimpleObjectProperty<>();
+	private final StringProperty personalData_birth_location = new SimpleStringProperty();
+	private final LongProperty personalData_PESEL = new SimpleLongProperty();
+	private final StringProperty personalData_father_name = new SimpleStringProperty();
+	private final StringProperty personalData_mother_name = new SimpleStringProperty();
+	private final StringProperty personalData_parents_address = new SimpleStringProperty();
+	private final StringProperty personalData_parents_mobile_number = new SimpleStringProperty();
+
+	//setter and getter for 'personalData_registeration_number'
+	public long getRegisterationNumber() {
+		return personalData_registeration_number.get();
+	}
+
+	public void setRegisterationNumber(long value) {
+		personalData_registeration_number.set(value);
+	}
+
+	public LongProperty registerationNumberProperty() {
+		return personalData_registeration_number;
+	}
+
+	//setter and getter for 'personalData_student_name'
+	public String getStudentName() {
+		return personalData_student_name.get();
+	}
+
+	public void setStudentName(String value) {
+		personalData_student_name.set(value);
+	}
+
+	public StringProperty studentNameProperty() {
+		return personalData_student_name;
+	}
+
+	//setter and getter for 'personalData_birth_date'
+	public LocalDate getBirthDate() {
+		return personalData_birth_date.get();
+	}
+
+	public void setBirthDate(LocalDate value) {
+		personalData_birth_date.set(value);
+	}
+
+	public ObjectProperty birthDateProperty() {
+		return personalData_birth_date;
+	}
+
+	//setter and getter for 'personalData_birth_location'
+	public String getBirthLocation() {
+		return personalData_birth_location.get();
+	}
+
+	public void setBirthLocation(String value) {
+		personalData_birth_location.set(value);
+	}
+
+	public StringProperty birthLocationProperty() {
+		return personalData_birth_location;
+	}
+
+	//setter and getter for 'personalData_PESEL'
+	public long getPESEL() {
+		return personalData_PESEL.get();
+	}
+
+	public void setPESEL(long value) {
+		personalData_PESEL.set(value);
+	}
+
+	public LongProperty peselProperty() {
+		return personalData_PESEL;
+	}
+
+	//setter and getter for 'personalData_father_name'
+	public String getFatherName() {
+		return personalData_father_name.get();
+	}
+
+	public void setFatherName(String value) {
+		personalData_father_name.set(value);
+	}
+
+	public StringProperty fatherNameProperty() {
+		return personalData_father_name;
+	}
+
+	//setter and getter for 'personalData_mother_name'
+	public String getMotherName() {
+		return personalData_mother_name.get();
+	}
+
+	public void setMotherName(String value) {
+		personalData_mother_name.set(value);
+	}
+
+	public StringProperty motherNameProperty() {
+		return personalData_mother_name;
+	}
+
+	//setter and getter for 'personalData_parents_address'
+	public String getParentsAddress() {
+		return personalData_parents_address.get();
+	}
+
+	public void setParentsAddress(String value) {
+		personalData_parents_address.set(value);
+	}
+
+	public StringProperty parentsAddressProperty() {
+		return personalData_parents_address;
+	}
+
+	//setter and getter for 'personalData_parents_mobile_number'
+	public String getParentsMobileNumber() {
+		return personalData_parents_mobile_number.get();
+	}
+
+	public void setParentsMobileNumber(String value) {
+		personalData_parents_mobile_number.set(value);
+	}
+
+	public StringProperty parentsMobileNumberProperty() {
+		return personalData_parents_mobile_number;
+	}
+
+	@Override
+	public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+		setId(in.readLong());
+		setFirstName((String) in.readObject());
+		setLastName((String) in.readObject());
+		setBirthDate((LocalDate) in.readObject());
+	}
+
+	@Override
+	public void writeExternal(ObjectOutput out) throws IOException {
+		out.writeLong(getId());
+		out.writeObject(getFirstName());
+		out.writeObject(getLastName());
+		out.writeObject(getBirthDate());
+	}
+}

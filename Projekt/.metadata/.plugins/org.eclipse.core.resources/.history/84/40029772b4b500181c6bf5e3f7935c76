@@ -1,0 +1,39 @@
+package networking.rmi.api;
+
+import java.io.Externalizable;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import java.time.LocalDate;
+import javafx.beans.property.LongProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleLongProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
+public class Program implements Externalizable{
+	private final LongProperty program_id = new SimpleLongProperty();
+	private final StringProperty program_course_name = new SimpleStringProperty();
+	private final StringProperty program_course_title = new SimpleStringProperty();
+	private final StringProperty program_teacher = new SimpleStringProperty();
+	private final StringProperty program_comments = new SimpleStringProperty();
+
+	@Override
+	public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+		setId(in.readLong());
+		setRegisterationNumber(in.readLong());
+		setStudentName((String) in.readObject());
+		setBirthDate((LocalDate) in.readObject());
+		setBirthLocation((String) in.readObject());
+	}
+
+	@Override
+	public void writeExternal(ObjectOutput out) throws IOException {
+		out.writeLong(getId());
+		out.writeObject(getRegisterationNumber());
+		out.writeObject(getStudentName());
+		out.writeObject(getBirthDate());
+		out.writeObject(getBirthLocation());
+	}
+}

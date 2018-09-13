@@ -1,0 +1,120 @@
+package networking.rmi.api;
+
+import java.io.Externalizable;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import java.time.LocalDate;
+import javafx.beans.property.LongProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleLongProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
+public class AdditionalBehaviour implements Externalizable{
+	private final LongProperty additionalBehaviourID = new SimpleLongProperty();
+	private final StringProperty additionalBehaviourStudentName = new SimpleStringProperty();
+	private final ObjectProperty<LocalDate> additionalBehaviourDate = new SimpleObjectProperty<>();
+	private final StringProperty additionalBehaviourKind = new SimpleStringProperty();
+	private final StringProperty additionalBehaviourInfo = new SimpleStringProperty();
+	private final StringProperty additionalBehaviourTeacher = new SimpleStringProperty();
+
+	//setter and getter for 'additionalBehaviourID'
+	public long getId() {
+		return additionalBehaviourID.get();
+	}
+
+	public void setId(long value) {
+		additionalBehaviourID.set(value);
+	}
+
+	public LongProperty idProperty() {
+		return additionalBehaviourID;
+	}
+
+	//setter and getter for 'additionalBehaviourStudentName'
+	public String getStudentName() {
+		return additionalBehaviourStudentName.get();
+	}
+
+	public void setStudentName(String value) {
+		additionalBehaviourStudentName.set(value);
+	}
+
+	public StringProperty studentNameProperty() {
+		return additionalBehaviourStudentName;
+	}
+
+	//setter and getter for 'additionalBehaviourDate'
+	public LocalDate getDate() {
+		return additionalBehaviourDate.get();
+	}
+
+	public void setDate(LocalDate value) {
+		additionalBehaviourDate.set(value);
+	}
+
+	public ObjectProperty dateProperty() {
+		return additionalBehaviourDate;
+	}
+
+	//setter and getter for 'additionalBehaviourKind'
+	public String getKind() {
+		return additionalBehaviourKind.get();
+	}
+
+	public void setKind(String value) {
+		additionalBehaviourKind.set(value);
+	}
+
+	public StringProperty kindProperty() {
+		return additionalBehaviourKind;
+	}
+
+	//setter and getter for 'additionalBehaviourInfo'
+	public String getInfo() {
+		return additionalBehaviourInfo.get();
+	}
+
+	public void setInfo(String value) {
+		additionalBehaviourInfo.set(value);
+	}
+
+	public StringProperty infoProperty() {
+		return additionalBehaviourInfo;
+	}
+
+	//setter and getter for 'additionalBehaviourTeacher'
+	public String getTeacher() {
+		return additionalBehaviourTeacher.get();
+	}
+
+	public void setTeacher(String value) {
+		additionalBehaviourTeacher.set(value);
+	}
+
+	public StringProperty teacherProperty() {
+		return additionalBehaviourTeacher;
+	}
+
+	@Override
+	public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+		setId(in.readLong());
+		setStudentName((String) in.readObject());
+		setDate((LocalDate) in.readObject());
+		setKind((String) in.readObject());
+		setInfo((String) in.readObject());
+		setTeacher((String) in.readObject());
+	}
+
+	@Override
+	public void writeExternal(ObjectOutput out) throws IOException {
+		out.writeLong(getId());
+		out.writeObject(getStudentName());
+		out.writeObject(getDate());
+		out.writeObject(getKind());
+		out.writeObject(getInfo());
+		out.writeObject(getTeacher());
+	}
+}

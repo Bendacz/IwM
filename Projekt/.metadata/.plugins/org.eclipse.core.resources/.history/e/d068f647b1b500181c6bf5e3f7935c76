@@ -1,0 +1,139 @@
+package networking.rmi.api;
+
+import java.io.Externalizable;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import java.time.LocalDate;
+import javafx.beans.property.LongProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleLongProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
+public class WeekTimetable implements Externalizable{
+	//private final LongProperty weekTimetable_id = new SimpleLongProperty();
+	private final StringProperty weekTimetable_from = new SimpleStringProperty();
+	private final StringProperty weekTimetable_to = new SimpleStringProperty();
+	private final StringProperty weekTimetable_monday = new SimpleStringProperty();
+	private final StringProperty weekTimetable_teusday = new SimpleStringProperty();
+	private final StringProperty weekTimetable_wednesday = new SimpleStringProperty();
+	private final StringProperty weekTimetable_thursday = new SimpleStringProperty();
+	private final StringProperty weekTimetable_friday = new SimpleStringProperty();
+
+	//setter and getter for 'weekTimetable_from'
+	public String getFrom() {
+		return weekTimetable_from.get();
+	}
+
+	public void setFrom(String value) {
+		weekTimetable_from.set(value);
+	}
+
+	public StringProperty fromProperty() {
+		return weekTimetable_from;
+	}
+
+	//setter and getter for 'weekTimetable_to'
+	public String getTo() {
+		return weekTimetable_to.get();
+	}
+
+	public void setTo(String value) {
+		weekTimetable_to.set(value);
+	}
+
+	public StringProperty toProperty() {
+		return weekTimetable_to;
+	}
+
+	//setter and getter for 'weekTimetable_monday'
+	public String getMonday() {
+		return weekTimetable_monday.get();
+	}
+
+	public void setMonday(String value) {
+		weekTimetable_monday.set(value);
+	}
+
+	public StringProperty mondayProperty() {
+		return weekTimetable_monday;
+	}
+
+	//setter and getter for 'weekTimetable_teusday'
+	public String getTeusday() {
+		return weekTimetable_teusday.get();
+	}
+
+	public void setTeusday(String value) {
+		weekTimetable_teusday.set(value);
+	}
+
+	public StringProperty teusdayProperty() {
+		return weekTimetable_teusday;
+	}
+
+	//setter and getter for 'weekTimetable_wednesday'
+	public String getWednesday() {
+		return weekTimetable_wednesday.get();
+	}
+
+	public void setWednesday(String value) {
+		weekTimetable_wednesday.set(value);
+	}
+
+	public StringProperty wednesdayProperty() {
+		return weekTimetable_wednesday;
+	}
+
+	//setter and getter for 'weekTimetable_thursday'
+	public String getThursday() {
+		return weekTimetable_thursday.get();
+	}
+
+	public void setThursday(String value) {
+		weekTimetable_thursday.set(value);
+	}
+
+	public StringProperty thursdayProperty() {
+		return weekTimetable_thursday;
+	}
+
+	//setter and getter for 'weekTimetable_friday'
+	public String getFriday() {
+		return weekTimetable_friday.get();
+	}
+
+	public void setFriday(String value) {
+		weekTimetable_friday.set(value);
+	}
+
+	public StringProperty fridayProperty() {
+		return weekTimetable_friday;
+	}
+
+	@Override
+	public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+		//setId(in.readLong());
+		setFrom((String) in.readObject());
+		setTo((String) in.readObject());
+		setMonday((String) in.readObject());
+		setTeusday((String) in.readObject());
+		setWednesday((String) in.readObject());
+		setThursday((String) in.readObject());
+		setFriday((String) in.readObject());
+	}
+
+	@Override
+	public void writeExternal(ObjectOutput out) throws IOException {
+		//out.writeLong(getId());
+		out.writeObject(getFrom());
+		out.writeObject(getTo());
+		out.writeObject(getMonday());
+		out.writeObject(getTeusday());
+		out.writeObject(getWednesday());
+		out.writeObject(getThursday());
+		out.writeObject(getFriday());
+	}
+}

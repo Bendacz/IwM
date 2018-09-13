@@ -1,0 +1,19 @@
+package networking.rmi.api;
+
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+import java.util.List;
+
+public interface Service extends Remote {
+	Person insertPerson(Person person) throws RemoteException;
+	void updatePerson(Person person) throws RemoteException;
+	void deletePerson(Long id) throws RemoteException;
+	Person getPersonById(Long id) throws RemoteException;
+	List<Person> getAllPerson() throws RemoteException;
+
+	PersonalData personalDataInsertPerson(PersonalData pd) throws RemoteException;
+	void personalDataUpdatePerson(Person person) throws RemoteException;
+	void personalDataDeletePerson(Long id) throws RemoteException;
+	PersonalData personalDataGetPersonById(Long id) throws RemoteException;
+	List<PersonalData> personalDataGetAllPerson() throws RemoteException;
+}

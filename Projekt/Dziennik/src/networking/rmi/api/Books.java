@@ -1,0 +1,117 @@
+package networking.rmi.api;
+
+import java.io.Externalizable;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import javafx.beans.property.LongProperty;
+import javafx.beans.property.SimpleLongProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
+public class Books implements Externalizable{
+	private final LongProperty booksID = new SimpleLongProperty();
+	private final StringProperty booksCourseName = new SimpleStringProperty();
+	private final StringProperty booksBookTitle = new SimpleStringProperty();
+	private final StringProperty booksAuthors = new SimpleStringProperty();
+	private final StringProperty booksPublishingHouse = new SimpleStringProperty();
+	private final StringProperty booksComments = new SimpleStringProperty();
+
+	//setter and getter for 'booksID'
+	public long getId() {
+		return booksID.get();
+	}
+
+	public void setId(long value) {
+		booksID.set(value);
+	}
+
+	public LongProperty idProperty() {
+		return booksID;
+	}
+
+	//setter and getter for 'booksCourseName'
+	public String getCourseName() {
+		return booksCourseName.get();
+	}
+
+	public void setCourseName(String value) {
+		booksCourseName.set(value);
+	}
+
+	public StringProperty courseNameProperty() {
+		return booksCourseName;
+	}
+
+	//setter and getter for 'booksBookTitle'
+	public String getBookTitle() {
+		return booksBookTitle.get();
+	}
+
+	public void setBookTitle(String value) {
+		booksBookTitle.set(value);
+	}
+
+	public StringProperty bookTitleProperty() {
+		return booksBookTitle;
+	}
+
+	//setter and getter for 'booksAuthors'
+	public String getAuthors() {
+		return booksAuthors.get();
+	}
+
+	public void setAuthors(String value) {
+		booksAuthors.set(value);
+	}
+
+	public StringProperty authorsProperty() {
+		return booksAuthors;
+	}
+
+	//setter and getter for 'booksPublishingHouse'
+	public String getPublishingHouse() {
+		return booksPublishingHouse.get();
+	}
+
+	public void setPublishingHouse(String value) {
+		booksPublishingHouse.set(value);
+	}
+
+	public StringProperty publishingHouseProperty() {
+		return booksPublishingHouse;
+	}
+
+	//setter and getter for 'booksComments'
+	public String getComments() {
+		return booksComments.get();
+	}
+
+	public void setComments(String value) {
+		booksComments.set(value);
+	}
+
+	public StringProperty commentsProperty() {
+		return booksComments;
+	}
+
+	@Override
+	public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+		setId(in.readLong());
+		setCourseName((String) in.readObject());
+		setBookTitle((String) in.readObject());
+		setAuthors((String) in.readObject());
+		setPublishingHouse((String) in.readObject());
+		setComments((String) in.readObject());
+	}
+
+	@Override
+	public void writeExternal(ObjectOutput out) throws IOException {
+		out.writeLong(getId());
+		out.writeObject(getCourseName());
+		out.writeObject(getBookTitle());
+		out.writeObject(getAuthors());
+		out.writeObject(getPublishingHouse());
+		out.writeObject(getComments());
+	}
+}

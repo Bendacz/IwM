@@ -1,0 +1,48 @@
+package networking.rmi.api;
+
+import java.io.Externalizable;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import java.time.LocalDate;
+import javafx.beans.property.LongProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleLongProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
+public class Subjects implements Externalizable{
+	private final LongProperty subjectsID = new SimpleLongProperty();
+	private final LongProperty subjectsRegisterationNumber = new SimpleLongProperty();
+	private final StringProperty subjectsStudentName = new SimpleStringProperty();
+	private final ObjectProperty<LocalDate> subjectsBirthDate = new SimpleObjectProperty<>();
+	private final StringProperty subjectsBirthLocation = new SimpleStringProperty();
+	private final LongProperty personalData_PESEL = new SimpleLongProperty();
+	private final StringProperty personalDataFatherName = new SimpleStringProperty();
+	private final StringProperty personalDataMotherName = new SimpleStringProperty();
+
+	@Override
+	public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+		setId(in.readLong());
+		setRegisterationNumber(in.readLong());
+		setStudentName((String) in.readObject());
+		setBirthDate((LocalDate) in.readObject());
+		setBirthLocation((String) in.readObject());
+		setPESEL(in.readLong());
+		setFatherName((String) in.readObject());
+		setMotherName((String) in.readObject());
+	}
+
+	@Override
+	public void writeExternal(ObjectOutput out) throws IOException {
+		out.writeLong(getId());
+		out.writeObject(getRegisterationNumber());
+		out.writeObject(getStudentName());
+		out.writeObject(getBirthDate());
+		out.writeObject(getBirthLocation());
+		out.writeObject(getPESEL());
+		out.writeObject(getFatherName());
+		out.writeObject(getMotherName());
+	}
+}

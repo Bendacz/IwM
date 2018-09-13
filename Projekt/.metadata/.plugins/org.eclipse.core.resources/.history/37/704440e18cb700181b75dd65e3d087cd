@@ -1,0 +1,91 @@
+package networking.rmi.client;
+
+import java.io.IOException;
+import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import networking.rmi.api.Accounts;
+import networking.rmi.api.Service;
+import networking.rmi.server.DatabaseConnection;
+
+public class LoginFormController implements Initializable{
+
+	@FXML private TextField txtLogin;
+	@FXML private PasswordField txtPassword;
+	@FXML private Label txtLabel;
+	private RMIClient main;
+	private Service personService;
+
+    public void loginAction(ActionEvent event){
+    	Accounts a= new Accounts();
+        PreparedStatement preparedStatement = null;
+
+        String login = txtLogin.getText().toString();
+        String password = txtPassword.getText().toString();
+
+        String sql = "select * from accounts where account_login = ? and account_password = ?";
+
+        try{
+			preparedStatement = DatabaseConnection.getConnection().prepareStatement(sql);
+            preparedStatement.setString(1, login);
+            preparedStatement.setString(2, password);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(!resultSet.next()){
+                infoBox("Please enter correct Email and Password", null, "Failed");
+            }else{
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminMenu.fxml"));
+				Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+				Parent root;
+				try {
+					root = loader.load();
+
+					AdminMenuController controller = loader.getController();
+					controller.setMain(main,this);
+					stage.setScene(new Scene(root));
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+
+    public static void infoBox(String infoMessage, String headerText, String title){
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setContentText(infoMessage);
+        alert.setTitle(title);
+        alert.setHeaderText(headerText);
+        alert.showAndWait();
+    }
+
+	@Override
+	public void initialize(URL url, ResourceBundle rb) {
+	}
+
+	public void setMain(RMIClient main) {
+		this.main = main;
+		this.personService = main.getPersonService();
+	}
+
+	public String getAdminLogin() {
+		return txtLogin.getText().toString();
+	}
+}

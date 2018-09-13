@@ -1,0 +1,5 @@
+package networking.rmi.api;
+
+public class Program {
+
+}

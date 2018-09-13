@@ -1,0 +1,948 @@
+package networking.rmi.client;
+
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import networking.rmi.api.AdditionalBehaviour;
+import networking.rmi.api.Books;
+import networking.rmi.api.Events;
+import networking.rmi.api.Person;
+import networking.rmi.api.PersonalData;
+import networking.rmi.api.Program;
+import networking.rmi.api.Service;
+import networking.rmi.api.Subjects;
+import networking.rmi.api.Trips;
+import networking.rmi.api.WeekTimetable;
+
+import java.net.URL;
+import java.rmi.RemoteException;
+import java.time.LocalDate;
+import java.util.ResourceBundle;
+
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
+
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TableColumn;
+
+public class AdminMenuController implements Initializable {
+	@FXML private TextField txtId;
+	@FXML private TextField txtFirstName;
+	@FXML private TextArea txtLastName;
+	@FXML private DatePicker dtpBirthDate;
+	@FXML private TableView<Person> tableView;
+	@FXML private TableColumn<Person, Long> colId;
+	@FXML private TableColumn<Person, String> colFirstName;
+	@FXML private TableColumn<Person, String> colLastName;
+	@FXML private TableColumn<Person, LocalDate> colBirthDate;
+
+	//*************************************************************FIELDS*************************************************************************//
+
+    //============================================================================================================================================//
+	//=============================================================PERSONAL DATA==================================================================//
+	//============================================================================================================================================//
+	@FXML private TextField txtPersonalDataID;
+	@FXML private TextField txtPersonalDataRegisterationNumber;
+	@FXML private TextField txtPersonalDataStudentName;
+	@FXML private DatePicker dtpPersonalDataBirthDate;
+	@FXML private TextArea txtPersonalDataBirthLocation;
+	@FXML private TextField txtPersonalDataPESEL;
+	@FXML private TextField txtPersonalDataFatherName;
+	@FXML private TextField txtPersonalDataMotherName;
+	@FXML private TextField txtPersonalDataParentsAddress;
+	@FXML private TextArea txtPersonalDataParentsMobileNumber;
+
+	@FXML private TableView<PersonalData> personalDataTableView;
+	@FXML private TableColumn<PersonalData, Long> colPersonalDataID;
+	@FXML private TableColumn<PersonalData, Long> colPersonalDataRegisterationNumber;
+	@FXML private TableColumn<PersonalData, String> colPersonalDataStudentName;
+	@FXML private TableColumn<PersonalData, LocalDate> colPersonalDataBirthDate;
+	@FXML private TableColumn<PersonalData, String> colPersonalDataBirthLocation;
+	@FXML private TableColumn<PersonalData, Long> colPersonalDataPESEL;
+	@FXML private TableColumn<PersonalData, String> colPersonalDataFatherName;
+	@FXML private TableColumn<PersonalData, String> colPersonalDataMotherName;
+	@FXML private TableColumn<PersonalData, String> colPersonalDataPatentsAddress;
+	@FXML private TableColumn<PersonalData, String> colPersonalDataParentsMobileNumber;
+
+	//============================================================================================================================================//
+	//=============================================================WEEK TIMETABLE=================================================================//
+	//============================================================================================================================================//
+	@FXML private TextField txtWeekTimetableID;
+	@FXML private TextField txtWeekTimetableFrom;
+	@FXML private TextField txtWeekTimetableTo;
+	@FXML private TextField txtWeekTimetableMonday;
+	@FXML private TextField txtWeekTimetableTeusday;
+	@FXML private TextField txtWeekTimetableWednesday;
+	@FXML private TextField txtWeekTimetableThursday;
+	@FXML private TextField txtWeekTimetableFriday;
+
+	@FXML private TableView<WeekTimetable> weekTimetableTableView;
+	@FXML private TableColumn<WeekTimetable, Long> colWeekTimetableID;
+	@FXML private TableColumn<WeekTimetable, String> colWeekTimetableFrom;
+	@FXML private TableColumn<WeekTimetable, String> colWeekTimetableTo;
+	@FXML private TableColumn<WeekTimetable, String> colWeekTimetableMonday;
+	@FXML private TableColumn<WeekTimetable, String> colWeekTimetableTeusday;
+	@FXML private TableColumn<WeekTimetable, String> colWeekTimetableWednesday;
+	@FXML private TableColumn<WeekTimetable, String> colWeekTimetableThursday;
+	@FXML private TableColumn<WeekTimetable, String> colWeekTimetableFriday;
+
+	//============================================================================================================================================//
+	//=============================================================PROGRAM========================================================================//
+	//============================================================================================================================================//
+	@FXML private TextField txtProgramID;
+	@FXML private TextField txtProgramCourseName;
+	@FXML private TextArea txtProgramCourseTitle;
+	@FXML private TextField txtProgramTeacher;
+	@FXML private TextArea txtProgramComments;
+
+	@FXML private TableView<Program> programTableView;
+	@FXML private TableColumn<Program, Long> colProgramID;
+	@FXML private TableColumn<Program, String> colProgramCourseName;
+	@FXML private TableColumn<Program, String> colProgramCourseTitle;
+	@FXML private TableColumn<Program, String> colProgramTeacher;
+	@FXML private TableColumn<Program, String> colProgramComments;
+
+	//============================================================================================================================================//
+	//=============================================================BOOKS==========================================================================//
+	//============================================================================================================================================//
+	@FXML private TextField txtBooksID;
+	@FXML private TextField txtBooksCourseName;
+	@FXML private TextArea txtBooksBookTitle;
+	@FXML private TextArea txtBooksAuthors;
+	@FXML private TextArea txtBooksPublishingHouse;
+	@FXML private TextArea txtBooksComments;
+
+	@FXML private TableView<Books> booksTableView;
+	@FXML private TableColumn<Books, Long> colBooksID;
+	@FXML private TableColumn<Books, String> colBooksCourseName;
+	@FXML private TableColumn<Books, String> colBooksBookTitle;
+	@FXML private TableColumn<Books, String> colBooksAuthors;
+	@FXML private TableColumn<Books, String> colBooksPublishingHouse;
+	@FXML private TableColumn<Books, String> colBooksComments;
+
+	//============================================================================================================================================//
+	//=============================================================SUBJECTS=======================================================================//
+	//============================================================================================================================================//
+	@FXML private TextField txtSubjectsID;
+	@FXML private DatePicker dtpSubjectsDate;
+	@FXML private TextField txtSubjectsNumber;
+	@FXML private TextField txtSubjectsCourseName;
+	@FXML private TextArea txtSubjectsSubject;
+	@FXML private TextField txtSubjectsPresent;
+	@FXML private TextField txtSubjectsAbsent;
+	@FXML private TextField txtSubjectsTeacher;
+
+	@FXML private TableView<Subjects> subjectsTableView;
+	@FXML private TableColumn<Subjects, Long> colSubjectsID;
+	@FXML private TableColumn<Subjects, LocalDate> colSubjectsDate;
+	@FXML private TableColumn<Subjects, Long> colSubjectsNumber;
+	@FXML private TableColumn<Subjects, String> colSubjectsCourseName;
+	@FXML private TableColumn<Subjects, String> colSubjectsSubject;
+	@FXML private TableColumn<Subjects, Long> colSubjectsPresent;
+	@FXML private TableColumn<Subjects, Long> colSubjectsAbsent;
+	@FXML private TableColumn<Subjects, String> colSubjectsTeacher;
+
+	//============================================================================================================================================//
+	//=============================================================TRIPS==========================================================================//
+	//============================================================================================================================================//
+	@FXML private TextField txtTripsID;
+	@FXML private DatePicker dtpTripsBegginingDate;
+	@FXML private DatePicker dtpTripsEndDate;
+	@FXML private TextField txtTripsDuration;
+	@FXML private TextField txtTripsParticipants;
+	@FXML private TextArea txtTripsDestination;
+	@FXML private TextField txtTripsTeacher;
+
+	@FXML private TableView<Trips> tripsTableView;
+	@FXML private TableColumn<Trips, Long> colTripsID;
+	@FXML private TableColumn<Trips, LocalDate> colTripsBegginingDate;
+	@FXML private TableColumn<Trips, LocalDate> colTripsEndDate;
+	@FXML private TableColumn<Trips, Long> colTripsDuration;
+	@FXML private TableColumn<Trips, Long> colTripsParticipants;
+	@FXML private TableColumn<Trips, String> colTripsDestination;
+	@FXML private TableColumn<Trips, String> colTripsTeacher;
+
+	//============================================================================================================================================//
+	//=============================================================EVENTS=========================================================================//
+	//============================================================================================================================================//
+	@FXML private TextField txtEventsID;
+	@FXML private DatePicker dtpEventsDate;
+	@FXML private TextArea txtEventsInfo;
+
+	@FXML private TableView<Events> eventsTableView;
+	@FXML private TableColumn<Events, Long> colEventsID;
+	@FXML private TableColumn<Events, LocalDate> colEventsDate;
+	@FXML private TableColumn<Events, String> colEventsInfo;
+
+	//============================================================================================================================================//
+	//=============================================================ADDITIONAL BEHAVIOUR===========================================================//
+	//============================================================================================================================================//
+	@FXML private TextField txtAdditionalBehaviourID;
+	@FXML private TextField txtAdditionalBehaviourStudentName;
+	@FXML private DatePicker dtpAdditionalBehaviourDate;
+	@FXML private TextField txtAdditionalBehaviourKind;
+	@FXML private TextArea txtAdditionalBehaviourInfo;
+	@FXML private TextField txtAdditionalBehaviourTeacher;
+
+	@FXML private TableView<AdditionalBehaviour> additionalBehaviourTableView;
+	@FXML private TableColumn<AdditionalBehaviour, Long> colAdditionalBehaviourID;
+	@FXML private TableColumn<AdditionalBehaviour, String> colAdditionalBehaviourStudentName;
+	@FXML private TableColumn<AdditionalBehaviour, LocalDate> colAdditionalBehaviourDate;
+	@FXML private TableColumn<AdditionalBehaviour, String> colAdditionalBehaviourKind;
+	@FXML private TableColumn<AdditionalBehaviour, String> colAdditionalBehaviourInfo;
+	@FXML private TableColumn<AdditionalBehaviour, String> colAdditionalBehaviourTeacher;
+
+	//============================================================================================================================================//
+	//============================================================================================================================================//
+	//============================================================================================================================================//
+
+	private RMIClient main;
+	private Service personService;
+
+
+
+	@Override
+	public void initialize(URL url, ResourceBundle rb) {
+
+		colId.setCellValueFactory(new PropertyValueFactory<Person, Long>("id"));
+		colFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+		colLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+		colBirthDate.setCellValueFactory(new PropertyValueFactory<>("birthDate"));
+
+		colPersonalDataID.setCellValueFactory(new PropertyValueFactory<PersonalData, Long>("personalDataID"));
+		colPersonalDataRegisterationNumber.setCellValueFactory(new PropertyValueFactory<PersonalData, Long>("personalDataRegisterationNumber"));
+		colPersonalDataStudentName.setCellValueFactory(new PropertyValueFactory<>("personalDataStudentName"));
+		colPersonalDataBirthDate.setCellValueFactory(new PropertyValueFactory<>("personalDataBirthDate"));
+		colPersonalDataBirthLocation.setCellValueFactory(new PropertyValueFactory<>("personalDataBirthLocation"));
+		colPersonalDataPESEL.setCellValueFactory(new PropertyValueFactory<PersonalData, Long>("personalDataPESEL"));
+		colPersonalDataFatherName.setCellValueFactory(new PropertyValueFactory<>("personalDataFatherName"));
+		colPersonalDataMotherName.setCellValueFactory(new PropertyValueFactory<>("personalDataMotherName"));
+		colPersonalDataPatentsAddress.setCellValueFactory(new PropertyValueFactory<>("personalDataParentsAddress"));
+		colPersonalDataParentsMobileNumber.setCellValueFactory(new PropertyValueFactory<>("personalDataParentsMobileNumber"));
+
+		colWeekTimetableID.setCellValueFactory(new PropertyValueFactory<WeekTimetable, Long>("weekTimetableID"));
+		colWeekTimetableFrom.setCellValueFactory(new PropertyValueFactory<>("weekTimetableFrom"));
+		colWeekTimetableTo.setCellValueFactory(new PropertyValueFactory<>("weekTimetableTo"));
+		colWeekTimetableMonday.setCellValueFactory(new PropertyValueFactory<>("weekTimetableMonday"));
+		colWeekTimetableTeusday.setCellValueFactory(new PropertyValueFactory<>("weekTimetableTeusday"));
+		colWeekTimetableWednesday.setCellValueFactory(new PropertyValueFactory<>("weekTimetableWednesday"));
+		colWeekTimetableThursday.setCellValueFactory(new PropertyValueFactory<>("weekTimetableThursday"));
+		colWeekTimetableFriday.setCellValueFactory(new PropertyValueFactory<>("weekTimetableFriday"));
+
+		colProgramID.setCellValueFactory(new PropertyValueFactory<Program, Long>("programID"));
+		colProgramCourseName.setCellValueFactory(new PropertyValueFactory<>("programCourseName"));
+		colProgramCourseTitle.setCellValueFactory(new PropertyValueFactory<>("programCourseTitle"));
+		colProgramTeacher.setCellValueFactory(new PropertyValueFactory<>("programTeacher"));
+		colProgramComments.setCellValueFactory(new PropertyValueFactory<>("programComments"));
+
+		colBooksID.setCellValueFactory(new PropertyValueFactory<Books, Long>("booksID"));
+		colBooksCourseName.setCellValueFactory(new PropertyValueFactory<>("booksCourseName"));
+		colBooksBookTitle.setCellValueFactory(new PropertyValueFactory<>("booksBookTitle"));
+		colBooksAuthors.setCellValueFactory(new PropertyValueFactory<>("booksAuthors"));
+		colBooksPublishingHouse.setCellValueFactory(new PropertyValueFactory<>("booksPublishingHouse"));
+		colBooksComments.setCellValueFactory(new PropertyValueFactory<>("booksComments"));
+
+		colSubjectsID.setCellValueFactory(new PropertyValueFactory<Subjects, Long>("subjectsID"));
+		colSubjectsDate.setCellValueFactory(new PropertyValueFactory<>("subjectsDate"));
+		colSubjectsNumber.setCellValueFactory(new PropertyValueFactory<Subjects, Long>("subjectsNumber"));
+		colSubjectsCourseName.setCellValueFactory(new PropertyValueFactory<>("subjectsCourseName"));
+		colSubjectsSubject.setCellValueFactory(new PropertyValueFactory<>("subjectsSubject"));
+		colSubjectsPresent.setCellValueFactory(new PropertyValueFactory<Subjects, Long>("subjectsPresent"));
+		colSubjectsAbsent.setCellValueFactory(new PropertyValueFactory<Subjects, Long>("subjectsAbsent"));
+		colSubjectsTeacher.setCellValueFactory(new PropertyValueFactory<>("subjectsTeacher"));
+
+		colTripsID.setCellValueFactory(new PropertyValueFactory<Trips, Long>("tripsID"));
+		colTripsBegginingDate.setCellValueFactory(new PropertyValueFactory<>("tripsBegginingDate"));
+		colTripsEndDate.setCellValueFactory(new PropertyValueFactory<>("tripsEndDate"));
+		colTripsDuration.setCellValueFactory(new PropertyValueFactory<Trips, Long>("tripsDuration"));
+		colTripsParticipants.setCellValueFactory(new PropertyValueFactory<Trips, Long>("tripsParticipants"));
+		colTripsDestination.setCellValueFactory(new PropertyValueFactory<>("tripsDestination"));
+		colTripsTeacher.setCellValueFactory(new PropertyValueFactory<>("tripsTeacher"));
+
+		colEventsID.setCellValueFactory(new PropertyValueFactory<Events, Long>("eventsID"));
+		colEventsDate.setCellValueFactory(new PropertyValueFactory<>("eventsDate"));
+		colEventsInfo.setCellValueFactory(new PropertyValueFactory<>("eventsInfo"));
+
+		colAdditionalBehaviourID.setCellValueFactory(new PropertyValueFactory<AdditionalBehaviour, Long>("additionalBehaviourID"));
+		colAdditionalBehaviourStudentName.setCellValueFactory(new PropertyValueFactory<>("additionalBehaviourStudentName"));
+		colAdditionalBehaviourDate.setCellValueFactory(new PropertyValueFactory<>("additionalBehaviourDate"));
+		colAdditionalBehaviourKind.setCellValueFactory(new PropertyValueFactory<>("additionalBehaviourKind"));
+		colAdditionalBehaviourInfo.setCellValueFactory(new PropertyValueFactory<>("additionalBehaviourInfo"));
+		colAdditionalBehaviourTeacher.setCellValueFactory(new PropertyValueFactory<>("additionalBehaviourTeacher"));
+
+
+		tableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Person>() {
+
+			@Override
+			public void changed(ObservableValue<? extends Person> arg0, Person oldPerson, Person newPerson) {
+				if(newPerson != null) {
+					txtId.setText(Long.toString(newPerson.getId()));
+					txtFirstName.setText(newPerson.getFirstName());
+					txtLastName.setText(newPerson.getLastName());
+					dtpBirthDate.setValue(newPerson.getBirthDate());
+				}else {
+					clearField();
+				}
+			}
+		});
+
+		personalDataTableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<PersonalData>()  {
+
+			@Override
+			public void changed(ObservableValue<? extends PersonalData> arg0, PersonalData oldPersonalData, PersonalData newPersonalData) {
+				if(newPersonalData != null) {
+					txtPersonalDataID.setText(Long.toString(newPersonalData.getId()));
+					txtPersonalDataRegisterationNumber.setText(Long.toString(newPersonalData.getId()));
+					txtPersonalDataStudentName.setText(newPersonalData.getStudentName());
+					dtpPersonalDataBirthDate.setValue(newPersonalData.getBirthDate());
+					txtPersonalDataBirthLocation.setText(newPersonalData.getBirthLocation());
+					txtPersonalDataPESEL.setText(Long.toString(newPersonalData.getPESEL()));
+					txtPersonalDataFatherName.setText(newPersonalData.getFatherName());
+					txtPersonalDataMotherName.setText(newPersonalData.getMotherName());
+					txtPersonalDataParentsAddress.setText(newPersonalData.getParentsAddress());
+					txtPersonalDataParentsMobileNumber.setText(newPersonalData.getParentsMobileNumber());
+				}else {
+					clearField();
+				}
+			}
+		});
+
+		weekTimetableTableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<WeekTimetable>()  {
+
+			@Override
+			public void changed(ObservableValue<? extends WeekTimetable> arg0, WeekTimetable oldWeekTimetable, WeekTimetable newWeekTimetable) {
+				if(newWeekTimetable != null) {
+					txtWeekTimetableID.setText(Long.toString(newWeekTimetable.getId()));
+					txtWeekTimetableFrom.setText(newWeekTimetable.getFrom());
+					txtWeekTimetableTo.setText(newWeekTimetable.getTo());
+					txtWeekTimetableMonday.setText(newWeekTimetable.getMonday());
+					txtWeekTimetableTeusday.setText(newWeekTimetable.getTeusday());
+					txtWeekTimetableWednesday.setText(newWeekTimetable.getWednesday());
+					txtWeekTimetableThursday.setText(newWeekTimetable.getThursday());
+					txtWeekTimetableFriday.setText(newWeekTimetable.getFriday());
+				}else {
+					clearField();
+				}
+			}
+		});
+
+		programTableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Program>()  {
+
+			@Override
+			public void changed(ObservableValue<? extends Program> arg0, Program oldProgram, Program newProgram) {
+				if(newProgram != null) {
+					txtProgramID.setText(Long.toString(newProgram.getId()));
+					txtProgramCourseName.setText(newProgram.getCourseName());
+					txtProgramCourseTitle.setText(newProgram.getCourseTitle());
+					txtProgramTeacher.setText(newProgram.getTeacher());
+					txtProgramComments.setText(newProgram.getComments());
+				}else {
+					clearField();
+				}
+			}
+		});
+
+		booksTableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Books>()  {
+
+			@Override
+			public void changed(ObservableValue<? extends Books> arg0, Books oldBooks, Books newBooks) {
+				if(newBooks != null) {
+					txtBooksID.setText(Long.toString(newBooks.getId()));
+					txtBooksCourseName.setText(newBooks.getCourseName());
+					txtBooksBookTitle.setText(newBooks.getBookTitle());
+					txtBooksAuthors.setText(newBooks.getAuthors());
+					txtBooksPublishingHouse.setText(newBooks.getPublishingHouse());
+					txtBooksComments.setText(newBooks.getComments());
+				}else {
+					clearField();
+				}
+			}
+		});
+
+		subjectsTableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Subjects>()  {
+
+			@Override
+			public void changed(ObservableValue<? extends Subjects> arg0, Subjects oldSubjects, Subjects newSubjects) {
+				if(newSubjects != null) {
+					txtSubjectsID.setText(Long.toString(newSubjects.getId()));
+					dtpSubjectsDate.setValue(newSubjects.getDate());
+					txtSubjectsNumber.setText(Long.toString(newSubjects.getNumber()));
+					txtSubjectsCourseName.setText(newSubjects.getCourseName());
+					txtSubjectsSubject.setText(newSubjects.getSubject());
+					txtSubjectsPresent.setText(Long.toString(newSubjects.getPresent()));
+					txtSubjectsAbsent.setText(Long.toString(newSubjects.getAbsent()));
+					txtSubjectsTeacher.setText(newSubjects.getTeacher());
+				}else {
+					clearField();
+				}
+			}
+		});
+
+		tripsTableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Trips>()  {
+
+			@Override
+			public void changed(ObservableValue<? extends Trips> arg0, Trips oldTrips, Trips newTrips) {
+				if(newTrips != null) {
+					txtTripsID.setText(Long.toString(newTrips.getId()));
+					dtpTripsBegginingDate.setValue(newTrips.getBegginingDate());
+					dtpTripsEndDate.setValue(newTrips.getEndDate());
+					txtTripsDuration.setText(Long.toString(newTrips.getDuration()));
+					txtTripsParticipants.setText(Long.toString(newTrips.getParticipants()));
+					txtTripsDestination.setText(newTrips.getDestination());
+					txtTripsTeacher.setText(newTrips.getTeacher());
+				}else {
+					clearField();
+				}
+			}
+		});
+
+		eventsTableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Events>()  {
+
+			@Override
+			public void changed(ObservableValue<? extends Events> arg0, Events oldEvents, Events newEvents) {
+				if(newEvents != null) {
+					txtEventsID.setText(Long.toString(newEvents.getId()));
+					dtpEventsDate.setValue(newEvents.getDate());
+					txtEventsInfo.setText(newEvents.getInfo());
+				}else {
+					clearField();
+				}
+			}
+		});
+
+		additionalBehaviourTableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<AdditionalBehaviour>()  {
+
+			@Override
+			public void changed(ObservableValue<? extends AdditionalBehaviour> arg0, AdditionalBehaviour oldAdditionalBehaviour, AdditionalBehaviour newAdditionalBehaviour) {
+				if(newAdditionalBehaviour != null) {
+					txtAdditionalBehaviourID.setText(Long.toString(newAdditionalBehaviour.getId()));
+					txtAdditionalBehaviourStudentName.setText(newAdditionalBehaviour.getStudentName());
+					dtpAdditionalBehaviourDate.setValue(newAdditionalBehaviour.getDate());
+					txtAdditionalBehaviourKind.setText(newAdditionalBehaviour.getKind());
+					txtAdditionalBehaviourInfo.setText(newAdditionalBehaviour.getInfo());
+					txtAdditionalBehaviourTeacher.setText(newAdditionalBehaviour.getTeacher());
+				}else {
+					clearField();
+				}
+			}
+		});
+	}
+
+	//*************************************************************METHODS************************************************************************//
+
+    //============================================================================================================================================//
+	//=============================================================PERSONAL DATA==================================================================//
+	//============================================================================================================================================//
+	@FXML
+	public void personalDataOnInsert(ActionEvent event) {
+
+		String errorMessage = "";
+
+		if(txtPersonalDataRegisterationNumber.getText() == null || txtPersonalDataRegisterationNumber.getText().isEmpty()) {
+			errorMessage += "Nieprawid³owo wype³nione pole: numer ewidencyjny!\n";
+		}
+
+		if(txtPersonalDataStudentName.getText() == null || txtPersonalDataStudentName.getText().isEmpty()) {
+			errorMessage += "Nieprawid³owo wype³nione pole: imiê i nazwisko ucznia!\n";
+		}
+
+		if(dtpPersonalDataBirthDate.getValue() == null) {
+			errorMessage += "Nieprawid³owo wype³nione pole: data urodzenia!\n";
+		}
+
+		if(txtPersonalDataBirthLocation.getText() == null || txtPersonalDataBirthLocation.getText().isEmpty()) {
+			errorMessage += "Nieprawid³owo wype³nione pole: miejsce urodzenia!\n";
+		}
+
+		if(txtPersonalDataPESEL.getText() == null || txtPersonalDataPESEL.getText().isEmpty()) {
+			errorMessage += "Nieprawid³owo wype³nione pole: PESEL!\n";
+		}
+
+		if(txtPersonalDataParentsAddress.getText() == null || txtPersonalDataParentsAddress.getText().isEmpty()) {
+			errorMessage += "Nieprawid³owo wype³nione pole: adres rodziców!\n";
+		}
+
+		if(txtPersonalDataParentsMobileNumber.getText() == null || txtPersonalDataParentsMobileNumber.getText().isEmpty()) {
+			errorMessage += "Nieprawid³owo wype³nione pole: numer telefonu rodziców!\n";
+		}
+
+		if (errorMessage.length() == 0) {
+			try {
+				PersonalData pd = new PersonalData();
+				pd.setRegisterationNumber(Long.valueOf(txtPersonalDataRegisterationNumber.getText()));
+				pd.setStudentName(txtPersonalDataStudentName.getText());
+				pd.setBirthDate(dtpPersonalDataBirthDate.getValue());
+				pd.setBirthLocation(txtPersonalDataBirthLocation.getText());
+				pd.setPESEL(Long.valueOf(txtPersonalDataPESEL.getText()));
+				pd.setFatherName(txtPersonalDataFatherName.getText());
+				pd.setMotherName(txtPersonalDataMotherName.getText());
+				pd.setParentsAddress(txtPersonalDataParentsAddress.getText());
+				pd.setParentsMobileNumber(txtPersonalDataParentsMobileNumber.getText());
+
+				pd = personService.insertPersonalData(pd);
+
+				personalDataTableView.getItems().add(pd);
+
+				//clearField();
+
+			} catch (RemoteException ex) {
+				ex.printStackTrace();
+			}
+		} else {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.initModality(Modality.APPLICATION_MODAL);
+			alert.setTitle("Nieprawid³owo wype³nione pola!");
+			alert.setHeaderText("Proszê poprawiæ nieprawid³owo wype³nione pola!");
+			alert.setContentText(errorMessage);
+			alert.showAndWait();
+		}
+	}
+
+	@FXML
+	public void personalDataOnUpdate(ActionEvent event) {
+		int index = personalDataTableView.getSelectionModel().getSelectedIndex();
+
+		String errorMessage = "";
+
+		if(txtPersonalDataRegisterationNumber.getText() == null || txtPersonalDataRegisterationNumber.getText().isEmpty()) {
+			errorMessage += "Nieprawid³owo wype³nione pole: numer ewidencyjny!\n";
+		}
+
+		if(txtPersonalDataStudentName.getText() == null || txtPersonalDataStudentName.getText().isEmpty()) {
+			errorMessage += "Nieprawid³owo wype³nione pole: imiê i nazwisko ucznia!\n";
+		}
+
+		if(dtpPersonalDataBirthDate.getValue() == null) {
+			errorMessage += "Nieprawid³owo wype³nione pole: data urodzenia!\n";
+		}
+
+		if(txtPersonalDataBirthLocation.getText() == null || txtPersonalDataBirthLocation.getText().isEmpty()) {
+			errorMessage += "Nieprawid³owo wype³nione pole: miejsce urodzenia!\n";
+		}
+
+		if(txtPersonalDataPESEL.getText() == null || txtPersonalDataPESEL.getText().isEmpty()) {
+			errorMessage += "Nieprawid³owo wype³nione pole: PESEL!\n";
+		}
+
+		if(txtPersonalDataParentsAddress.getText() == null || txtPersonalDataParentsAddress.getText().isEmpty()) {
+			errorMessage += "Nieprawid³owo wype³nione pole: adres rodziców!\n";
+		}
+
+		if(txtPersonalDataParentsMobileNumber.getText() == null || txtPersonalDataParentsMobileNumber.getText().isEmpty()) {
+			errorMessage += "Nieprawid³owo wype³nione pole: numer telefonu rodziców!\n";
+		}
+
+		if (errorMessage.length() == 0) {
+			try {
+				PersonalData pd = new PersonalData();
+				pd.setId(Long.valueOf(txtPersonalDataID.getText()));
+				pd.setRegisterationNumber(Long.valueOf(txtPersonalDataRegisterationNumber.getText()));
+				pd.setStudentName(txtPersonalDataStudentName.getText());
+				pd.setBirthDate(dtpPersonalDataBirthDate.getValue());
+				pd.setBirthLocation(txtPersonalDataBirthLocation.getText());
+				pd.setPESEL(Long.valueOf(txtPersonalDataPESEL.getText()));
+				pd.setFatherName(txtPersonalDataFatherName.getText());
+				pd.setMotherName(txtPersonalDataMotherName.getText());
+				pd.setParentsAddress(txtPersonalDataParentsAddress.getText());
+				pd.setParentsMobileNumber(txtPersonalDataParentsMobileNumber.getText());
+
+				personService.updatePersonalData(pd);
+
+				personalDataTableView.getItems().set(index,  pd);
+
+				//clearField();
+			} catch (RemoteException ex) {
+				ex.printStackTrace();
+			}
+		} else {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.initModality(Modality.APPLICATION_MODAL);
+			alert.setTitle("Nieprawid³owo wype³nione pola!");
+			alert.setHeaderText("Proszê poprawiæ nieprawid³owo wype³nione pola!");
+			alert.setContentText(errorMessage);
+			alert.showAndWait();
+		}
+	}
+
+	@FXML
+	public void personalDataOnDelete(ActionEvent event) {
+		try {
+			PersonalData pd = personalDataTableView.getSelectionModel().getSelectedItem();
+
+			if(pd == null) {
+				return;
+			}
+
+			personService.deletePersonalData(pd.getId());
+
+			personalDataTableView.getItems().remove(pd);
+
+			//clearField();
+		} catch (RemoteException ex) {
+			ex.printStackTrace();
+		}
+	}
+
+	@FXML
+	public void personalDataOnRefresh(ActionEvent event) {
+		try {
+			personalDataTableView.getItems().setAll(personService.getAllPersonalData());
+		} catch (RemoteException ex) {
+			ex.printStackTrace();
+		}
+		clearField();
+	}
+
+	//============================================================================================================================================//
+	//=============================================================WEEK TIMETABLE=================================================================//
+	//============================================================================================================================================//
+	@FXML
+	public void weekTimetableOnInsert(ActionEvent event) {
+
+		String errorMessage = "";
+
+		if(txtWeekTimetableFrom.getText() == null || txtWeekTimetableFrom.getText().isEmpty()) {
+			errorMessage += "Nieprawid³owo wype³nione pole: godzina rozpoczêcia zajêæ!\n";
+		}
+
+		if(txtWeekTimetableTo.getText() == null || txtWeekTimetableTo.getText().isEmpty()) {
+			errorMessage += "Nieprawid³owo wype³nione pole: godzina zakoñczenia zajêæ!\n";
+		}
+
+		if(txtWeekTimetableMonday.getText() == null || txtWeekTimetableMonday.getText().isEmpty()) {
+			errorMessage += "Nieprawid³owo wype³nione pole: poniedzia³ek!\n";
+		}
+
+		if(txtWeekTimetableTeusday.getText() == null || txtWeekTimetableTeusday.getText().isEmpty()) {
+			errorMessage += "Nieprawid³owo wype³nione pole: wtorek!\n";
+		}
+
+		if(txtWeekTimetableWednesday.getText() == null || txtWeekTimetableWednesday.getText().isEmpty()) {
+			errorMessage += "Nieprawid³owo wype³nione pole: œroda!\n";
+		}
+
+		if(txtWeekTimetableThursday.getText() == null || txtWeekTimetableThursday.getText().isEmpty()) {
+			errorMessage += "Nieprawid³owo wype³nione pole: czwartek!\n";
+		}
+
+		if(txtWeekTimetableFriday.getText() == null || txtWeekTimetableFriday.getText().isEmpty()) {
+			errorMessage += "Nieprawid³owo wype³nione pole: pi¹tek!\n";
+		}
+
+		if (errorMessage.length() == 0) {
+			try {
+				WeekTimetable wt = new WeekTimetable();
+				wt.setFrom(txtWeekTimetableFrom.getText());
+				wt.setTo(txtWeekTimetableTo.getText());
+				wt.setMonday(txtWeekTimetableMonday.getText());
+				wt.setTeusday(txtWeekTimetableTeusday.getText());
+				wt.setWednesday(txtWeekTimetableWednesday.getText());
+				wt.setThursday(txtWeekTimetableThursday.getText());
+				wt.setFriday(txtWeekTimetableFriday.getText());
+
+				wt = personService.insertWeekTimetable(wt);
+
+				weekTimetableTableView.getItems().add(wt);
+
+				//clearField();
+
+			} catch (RemoteException ex) {
+				ex.printStackTrace();
+			}
+		} else {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.initModality(Modality.APPLICATION_MODAL);
+			alert.setTitle("Nieprawid³owo wype³nione pola!");
+			alert.setHeaderText("Proszê poprawiæ nieprawid³owo wype³nione pola!");
+			alert.setContentText(errorMessage);
+			alert.showAndWait();
+		}
+	}
+
+	@FXML
+	public void weekTimetableOnUpdate(ActionEvent event) {
+		int index = weekTimetableTableView.getSelectionModel().getSelectedIndex();
+
+		String errorMessage = "";
+
+		if(txtWeekTimetableFrom.getText() == null || txtWeekTimetableFrom.getText().isEmpty()) {
+			errorMessage += "Nieprawid³owo wype³nione pole: godzina rozpoczêcia zajêæ!\n";
+		}
+
+		if(txtWeekTimetableTo.getText() == null || txtWeekTimetableTo.getText().isEmpty()) {
+			errorMessage += "Nieprawid³owo wype³nione pole: godzina zakoñczenia zajêæ!\n";
+		}
+
+		if(txtWeekTimetableMonday.getText() == null || txtWeekTimetableMonday.getText().isEmpty()) {
+			errorMessage += "Nieprawid³owo wype³nione pole: poniedzia³ek!\n";
+		}
+
+		if(txtWeekTimetableTeusday.getText() == null || txtWeekTimetableTeusday.getText().isEmpty()) {
+			errorMessage += "Nieprawid³owo wype³nione pole: wtorek!\n";
+		}
+
+		if(txtWeekTimetableWednesday.getText() == null || txtWeekTimetableWednesday.getText().isEmpty()) {
+			errorMessage += "Nieprawid³owo wype³nione pole: œroda!\n";
+		}
+
+		if(txtWeekTimetableThursday.getText() == null || txtWeekTimetableThursday.getText().isEmpty()) {
+			errorMessage += "Nieprawid³owo wype³nione pole: czwartek!\n";
+		}
+
+		if(txtWeekTimetableFriday.getText() == null || txtWeekTimetableFriday.getText().isEmpty()) {
+			errorMessage += "Nieprawid³owo wype³nione pole: pi¹tek!\n";
+		}
+
+		if (errorMessage.length() == 0) {
+			try {
+				WeekTimetable wt = new WeekTimetable();
+				wt.setId(Long.valueOf(txtWeekTimetableID.getText()));
+				wt.setFrom(txtWeekTimetableFrom.getText());
+				wt.setTo(txtWeekTimetableTo.getText());
+				wt.setMonday(txtWeekTimetableMonday.getText());
+				wt.setTeusday(txtWeekTimetableTeusday.getText());
+				wt.setWednesday(txtWeekTimetableWednesday.getText());
+				wt.setThursday(txtWeekTimetableThursday.getText());
+				wt.setFriday(txtWeekTimetableFriday.getText());
+
+				personService.updateWeekTimetable(wt);
+
+				weekTimetableTableView.getItems().set(index,  wt);
+
+				//clearField();
+			} catch (RemoteException ex) {
+				ex.printStackTrace();
+			}
+		} else {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.initModality(Modality.APPLICATION_MODAL);
+			alert.setTitle("Nieprawid³owo wype³nione pola!");
+			alert.setHeaderText("Proszê poprawiæ nieprawid³owo wype³nione pola!");
+			alert.setContentText(errorMessage);
+			alert.showAndWait();
+		}
+	}
+
+	@FXML
+	public void weekTimetableOnDelete(ActionEvent event) {
+		try {
+			WeekTimetable wt = weekTimetableTableView.getSelectionModel().getSelectedItem();
+
+			if(wt == null) {
+				return;
+			}
+
+			personService.deleteWeekTimetable(wt.getId());
+
+			weekTimetableTableView.getItems().remove(wt);
+
+			//clearField();
+		} catch (RemoteException ex) {
+			ex.printStackTrace();
+		}
+	}
+
+	@FXML
+	public void weekTimetableOnRefresh(ActionEvent event) {
+		try {
+			weekTimetableTableView.getItems().setAll(personService.getAllWeekTimetable());
+		} catch (RemoteException ex) {
+			ex.printStackTrace();
+		}
+		clearField();
+	}
+
+	//============================================================================================================================================//
+	//=============================================================PROGRAM========================================================================//
+	//============================================================================================================================================//
+
+
+	//============================================================================================================================================//
+	//=============================================================BOOKS==========================================================================//
+	//============================================================================================================================================//
+
+
+	//============================================================================================================================================//
+	//=============================================================SUBJECTS=======================================================================//
+	//============================================================================================================================================//
+
+
+	//============================================================================================================================================//
+	//=============================================================TRIPS==========================================================================//
+	//============================================================================================================================================//
+
+
+	//============================================================================================================================================//
+	//=============================================================EVENTS=========================================================================//
+	//============================================================================================================================================//
+
+
+	//============================================================================================================================================//
+	//=============================================================ADDITIONAL BEHAVIOUR===========================================================//
+	//============================================================================================================================================//
+
+
+	//============================================================================================================================================//
+	//============================================================================================================================================//
+	//============================================================================================================================================//
+
+
+	// Event Listener on Button.onAction
+	@FXML
+	public void onInsert(ActionEvent event) {
+
+		String errorMessage = "";
+
+		if(txtFirstName.getText() == null || txtFirstName.getText().isEmpty()) {
+			errorMessage += "No valid first name!\n";
+		}
+
+		if(dtpBirthDate.getValue() == null) {
+			errorMessage += "No valid birth date!\n";
+		}
+
+		if(errorMessage.length() == 0) {
+			try {
+				Person person = new Person();
+				person.setFirstName(txtFirstName.getText());
+				person.setLastName(txtLastName.getText());
+				person.setBirthDate(dtpBirthDate.getValue());
+
+				person = personService.insertPerson(person);
+
+				tableView.getItems().add(person);
+
+				clearField();
+
+			} catch (RemoteException ex) {
+				ex.printStackTrace();
+			}
+		} else {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.initModality(Modality.APPLICATION_MODAL);
+			alert.setTitle("Nieprawid³owo wype³nione pola!");
+			alert.setHeaderText("Proszê poprawiæ nieprawid³owo wype³nione pola!");
+			alert.setContentText(errorMessage);
+			alert.showAndWait();
+		}
+	}
+	// Event Listener on Button.onAction
+	@FXML
+	public void onUpdate(ActionEvent event) {
+		int index = tableView.getSelectionModel().getSelectedIndex();
+
+		String errorMessage = "";
+
+		if(txtFirstName.getText() == null || txtFirstName.getText().isEmpty()) {
+			errorMessage += "No valid first name!\n";
+		}
+
+		if(dtpBirthDate.getValue() == null) {
+			errorMessage += "No valid birth date!\n";
+		}
+
+		if (errorMessage.length() == 0) {
+			try {
+				Person person = new Person();
+				person.setId(Long.valueOf(txtId.getText()));
+				person.setFirstName(txtFirstName.getText());
+				person.setLastName(txtLastName.getText());
+				person.setBirthDate(dtpBirthDate.getValue());
+
+				personService.updatePerson(person);
+
+				tableView.getItems().set(index,  person);
+
+				clearField();
+			} catch (RemoteException ex) {
+				ex.printStackTrace();
+			}
+		} else {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.initModality(Modality.APPLICATION_MODAL);
+			alert.setTitle("Nieprawid³owo wype³nione pola!");
+			alert.setHeaderText("Proszê poprawiæ nieprawid³owo wype³nione pola!");
+			alert.setContentText(errorMessage);
+			alert.showAndWait();
+		}
+	}
+	// Event Listener on Button.onAction
+	@FXML
+	public void onDelete(ActionEvent event) {
+		try {
+			Person person = tableView.getSelectionModel().getSelectedItem();
+
+			if(person == null) {
+				return;
+			}
+
+			personService.deletePerson(person.getId());
+
+			tableView.getItems().remove(person);
+
+			clearField();
+		} catch (RemoteException ex) {
+			ex.printStackTrace();
+		}
+	}
+	// Event Listener on Button.onAction
+	@FXML
+	public void onRefresh(ActionEvent event) {
+		try {
+			tableView.getItems().setAll(personService.getAllPerson());
+		} catch (RemoteException ex) {
+			ex.printStackTrace();
+		}
+		clearField();
+	}
+
+	public void setMain(RMIClient main) {
+		this.main = main;
+		this.personService = main.getPersonService();
+		try {
+			tableView.getItems().setAll(personService.getAllPerson());
+			personalDataTableView.getItems().setAll(personService.getAllPersonalData());
+		} catch (RemoteException ex) {
+			ex.printStackTrace();
+		}
+	}
+
+	private boolean isFieldValid() {
+		String errorMessage = "";
+
+		if(txtFirstName.getText() == null || txtFirstName.getText().isEmpty()) {
+			errorMessage += "No valid first name!\n";
+		}
+
+		if(dtpBirthDate.getValue() == null) {
+			errorMessage += "No valid birth date!\n";
+		}
+
+		if(errorMessage.length() == 0) {
+			return true;
+		} else {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.initModality(Modality.APPLICATION_MODAL);
+			alert.setTitle("Invalid Fields");
+			alert.setHeaderText("Please correct invalid fields");
+			alert.setContentText(errorMessage);
+			alert.showAndWait();
+			return false;
+		}
+	}
+
+	private void clearField() {
+		txtId.setText("");
+		txtFirstName.setText("");;
+		txtLastName.setText("");
+		dtpBirthDate.setValue(null);
+	}
+
+}

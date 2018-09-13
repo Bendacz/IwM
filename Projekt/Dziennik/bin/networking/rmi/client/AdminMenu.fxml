@@ -1,0 +1,1109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<TabPane prefHeight="800.0" prefWidth="1230.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="networking.rmi.client.AdminMenuController">
+   <tabs>
+      <Tab text="Dane osobowe">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="771.0" prefWidth="1143.0">
+               <children>
+                  <HBox alignment="CENTER" layoutX="1.0" layoutY="-2.0" prefHeight="100.0" prefWidth="1231.0">
+                     <children>
+                        <Label text="Dane osobowe uczniów">
+                           <font>
+                              <Font name="System Bold Italic" size="30.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <GridPane layoutX="122.0" layoutY="90.0" prefHeight="200.0" prefWidth="420.0">
+                     <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="331.0" minWidth="10.0" prefWidth="165.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="467.0" minWidth="10.0" prefWidth="260.0" />
+                        <ColumnConstraints />
+                        <ColumnConstraints />
+                        <ColumnConstraints />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label text="Numer ewidencyjny ucznia">
+                           <font>
+                              <Font name="System Bold Italic" size="11.0" />
+                           </font>
+                        </Label>
+                        <Label text="Imię i nazwisko ucznia" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold Italic" size="11.0" />
+                           </font>
+                        </Label>
+                        <Label text="Data urodzenia" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold Italic" size="11.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="47.0" text="Miejsce urodzenia" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="System Bold Italic" size="11.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="77.0" text="PESEL" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="System Bold Italic" size="11.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtPersonalDataRegisterationNumber" prefHeight="29.0" prefWidth="45.0" GridPane.columnIndex="1" />
+                        <TextField fx:id="txtPersonalDataPESEL" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="4" />
+                        <TextField fx:id="txtPersonalDataStudentName" prefHeight="29.0" prefWidth="45.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <DatePicker fx:id="dtpPersonalDataBirthDate" prefHeight="29.0" prefWidth="260.0" style="-fx-alignment: CENTER;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextArea fx:id="txtPersonalDataBirthLocation" prefHeight="52.0" prefWidth="258.0" style="-fx-alignment: CENTER;" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                     </children>
+                  </GridPane>
+                  <GridPane layoutX="693.0" layoutY="101.0" prefHeight="179.0" prefWidth="420.0">
+                     <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="331.0" minWidth="10.0" prefWidth="165.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="467.0" minWidth="10.0" prefWidth="255.0" />
+                        <ColumnConstraints />
+                        <ColumnConstraints />
+                        <ColumnConstraints />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label text="Imię i nazwisko ojca">
+                           <font>
+                              <Font name="System Bold Italic" size="11.0" />
+                           </font>
+                        </Label>
+                        <Label text="Imię i nazwisko matki" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold Italic" size="11.0" />
+                           </font>
+                        </Label>
+                        <Label text="Adres rodziców" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold Italic" size="11.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="47.0" text="Numer telefonu rodziców" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="System Bold Italic" size="11.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtPersonalDataFatherName" prefHeight="9.0" prefWidth="245.0" GridPane.columnIndex="1" />
+                        <TextField fx:id="txtPersonalDataParentsAddress" prefHeight="0.0" prefWidth="260.0" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="2" />
+                        <TextField fx:id="txtPersonalDataMotherName" prefHeight="7.0" prefWidth="225.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextArea fx:id="txtPersonalDataParentsMobileNumber" prefHeight="200.0" prefWidth="200.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                     </children>
+                  </GridPane>
+                  <TableView fx:id="personalDataTableView" layoutX="2.0" layoutY="372.0" prefHeight="399.0" prefWidth="1230.0" tableMenuButtonVisible="true">
+                     <columns>
+                        <TableColumn fx:id="colPersonalDataID" prefWidth="35.0" resizable="false" style="-fx-alignment: CENTER;" text="ID" visible="false" />
+                        <TableColumn fx:id="colPersonalDataRegisterationNumber" prefWidth="120.0" resizable="false" text="Numer ewidencyjny" />
+                        <TableColumn fx:id="colPersonalDataStudentName" prefWidth="147.0" resizable="false" text="Imię i nazwisko ucznia" />
+                        <TableColumn fx:id="colPersonalDataBirthDate" prefWidth="98.0" resizable="false" text="Data urodzenia" />
+                        <TableColumn fx:id="colPersonalDataBirthLocation" prefWidth="133.0" resizable="false" text="Miejsce urodzenia" />
+                        <TableColumn fx:id="colPersonalDataPESEL" prefWidth="98.0" resizable="false" text="PESEL" />
+                        <TableColumn fx:id="colPersonalDataFatherName" prefWidth="140.0" resizable="false" text="Imię i nazwisko ojca" />
+                        <TableColumn fx:id="colPersonalDataMotherName" prefWidth="160.0" resizable="false" text="Imię i nazwisko matki" />
+                        <TableColumn fx:id="colPersonalDataPatentsAddress" prefWidth="142.0" resizable="false" text="Adres rodziców" />
+                        <TableColumn fx:id="colPersonalDataParentsMobileNumber" prefWidth="177.0" resizable="false" text="Numer telefonu rodziców" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+                  <HBox alignment="CENTER" layoutX="338.0" layoutY="295.0" prefHeight="74.0" prefWidth="555.0" spacing="20.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#personalDataOnInsert" prefHeight="25.0" prefWidth="100.0" text="Dodaj" />
+                        <Button mnemonicParsing="false" onAction="#personalDataOnUpdate" prefWidth="100.0" text="Aktualizuj" />
+                        <Button mnemonicParsing="false" onAction="#personalDataOnDelete" prefWidth="100.0" text="Usuń" />
+                        <Button mnemonicParsing="false" onAction="#personalDataOnRefresh" prefWidth="100.0" text="Odśwież" />
+                     </children>
+                  </HBox>
+                  <TextField fx:id="txtPersonalDataID" layoutX="66.0" layoutY="303.0" visible="false" />
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+      <Tab text="Plan zajęć">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="553.0" prefWidth="700.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1231.0">
+                     <children>
+                        <Label text="Tygodniowy plan zajęć edukacyjnych">
+                           <font>
+                              <Font name="System Bold Italic" size="30.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <GridPane layoutX="394.0" layoutY="100.0" prefHeight="255.0" prefWidth="444.0">
+                    <columnConstraints>
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="331.0" minWidth="10.0" prefWidth="225.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="467.0" minWidth="10.0" prefWidth="45.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="467.0" minWidth="10.0" prefWidth="15.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="467.0" minWidth="10.0" prefWidth="45.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="467.0" minWidth="10.0" prefWidth="123.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Czas trwania lekcji od-do">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="Poniedziałek" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="47.0" text="Wtorek" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="77.0" text="Środa" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="Czwartek" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="Piątek" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtWeekTimetableFrom" alignment="CENTER" prefHeight="29.0" prefWidth="45.0" GridPane.columnIndex="1" />
+                        <Label text="-" GridPane.columnIndex="2">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtWeekTimetableTo" alignment="CENTER" prefHeight="29.0" prefWidth="45.0" GridPane.columnIndex="3" />
+                        <TextField fx:id="txtWeekTimetableMonday" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="1" />
+                        <TextField fx:id="txtWeekTimetableTeusday" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="2" />
+                        <TextField fx:id="txtWeekTimetableWednesday" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="3" />
+                        <TextField fx:id="txtWeekTimetableThursday" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="4" />
+                        <TextField fx:id="txtWeekTimetableFriday" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="5" />
+                     </children>
+                  </GridPane>
+                  <TableView fx:id="weekTimetableTableView" layoutY="435.0" prefHeight="337.0" prefWidth="1231.0" tableMenuButtonVisible="true">
+                    <columns>
+                      <TableColumn fx:id="colWeekTimetableFrom" prefWidth="177.5" resizable="false" text="Godzina rozpoczęcia zajęć" />
+                        <TableColumn fx:id="colWeekTimetableTo" prefWidth="177.5" resizable="false" text="Godzina zakończenia zajęć" />
+                        <TableColumn fx:id="colWeekTimetableMonday" prefWidth="175.0" resizable="false" text="Poniedziałek" />
+                        <TableColumn fx:id="colWeekTimetableTeusday" prefWidth="175.0" resizable="false" text="Wtorek" />
+                        <TableColumn fx:id="colWeekTimetableWednesday" prefWidth="175.0" resizable="false" text="Środa" />
+                        <TableColumn fx:id="colWeekTimetableThursday" prefWidth="175.0" resizable="false" text="Czwartek" />
+                        <TableColumn fx:id="colWeekTimetableFriday" prefWidth="175.0" resizable="false" text="Piątek" />
+                        <TableColumn fx:id="colWeekTimetableID" prefWidth="177.5" resizable="false" text="ID" visible="false" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+                  <HBox alignment="CENTER" layoutX="339.0" layoutY="361.0" prefHeight="74.0" prefWidth="555.0" spacing="20.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#weekTimetableOnInsert" prefHeight="25.0" prefWidth="100.0" text="Dodaj" />
+                        <Button mnemonicParsing="false" onAction="#weekTimetableOnUpdate" prefWidth="100.0" text="Aktualizuj" />
+                        <Button mnemonicParsing="false" onAction="#weekTimetableOnDelete" prefWidth="100.0" text="Usuń" />
+                        <Button mnemonicParsing="false" onAction="#weekTimetableOnRefresh" prefWidth="100.0" text="Odśwież" />
+                     </children>
+                  </HBox>
+                  <TextField fx:id="txtWeekTimetableID" layoutX="25.0" layoutY="178.0" visible="false" />
+               </children></AnchorPane>
+         </content>
+      </Tab>
+      <Tab text="Program nauczania">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="553.0" prefWidth="700.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1230.0">
+                     <children>
+                        <Label text="Informacje o programach nauczania">
+                           <font>
+                              <Font name="System Bold Italic" size="30.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <GridPane alignment="CENTER" layoutX="300.0" layoutY="100.0" prefHeight="190.0" prefWidth="631.0" vgap="10.0">
+                     <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="331.0" minWidth="10.0" prefWidth="164.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="487.0" minWidth="10.0" prefWidth="467.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="38.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="146.0" minHeight="10.0" prefHeight="47.0" valignment="TOP" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="214.0" minHeight="10.0" prefHeight="63.0" valignment="TOP" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label text="Nazwa przedmiotu">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="Tytuł programu" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="Uwagi" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtProgramCourseName" prefHeight="0.0" prefWidth="465.0" GridPane.columnIndex="1" />
+                        <TextArea fx:id="txtProgramCourseTitle" prefHeight="75.0" prefWidth="465.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextArea fx:id="txtProgramComments" prefHeight="142.0" prefWidth="467.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                     </children>
+                  </GridPane>
+                  <TableView fx:id="programTableView" layoutY="365.0" prefHeight="407.0" prefWidth="1230.0" tableMenuButtonVisible="true">
+                     <columns>
+                        <TableColumn fx:id="colProgramCourseName" prefWidth="208.0" resizable="false" text="Nazwa przedmiotu" />
+                        <TableColumn fx:id="colProgramCourseTitle" prefWidth="346.0" resizable="false" text="Tytuł programu" />
+                        <TableColumn fx:id="colProgramTeacher" prefWidth="225.0" resizable="false" text="Nauczyciel" />
+                        <TableColumn fx:id="colProgramComments" prefWidth="449.0" resizable="false" text="Uwagi" />
+                        <TableColumn fx:id="colProgramID" prefWidth="238.0" resizable="false" text="ID" visible="false" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+                  <HBox alignment="CENTER" layoutX="338.0" layoutY="291.0" prefHeight="74.0" prefWidth="555.0" spacing="20.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#programOnInsert" prefHeight="25.0" prefWidth="100.0" text="Dodaj" />
+                        <Button mnemonicParsing="false" onAction="#programOnUpdate" prefWidth="100.0" text="Aktualizuj" />
+                        <Button mnemonicParsing="false" onAction="#programOnDelete" prefWidth="100.0" text="Usuń" />
+                        <Button mnemonicParsing="false" onAction="#programOnRefresh" prefWidth="100.0" text="Odśwież" />
+                     </children>
+                  </HBox>
+                  <TextField fx:id="txtProgramID" layoutX="38.0" layoutY="219.0" visible="false" />
+                  <TextField fx:id="txtProgramTeacher" layoutX="55.0" layoutY="138.0" visible="false" />
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+      <Tab text="Podręczniki">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="553.0" prefWidth="700.0">
+               <children>
+                  <TableView fx:id="booksTableView" layoutY="492.0" prefHeight="280.0" prefWidth="1230.0" tableMenuButtonVisible="true">
+                     <columns>
+                        <TableColumn fx:id="colBooksCourseName" prefWidth="161.0" resizable="false" text="Nazwa przedmiotu" />
+                        <TableColumn fx:id="colBooksBookTitle" prefWidth="362.0" resizable="false" text="Tytuł podręcznika" />
+                        <TableColumn fx:id="colBooksAuthors" prefWidth="166.0" resizable="false" text="Autorzy" />
+                        <TableColumn fx:id="colBooksPublishingHouse" prefWidth="278.0" resizable="false" text="Wydawnictwo" />
+                        <TableColumn fx:id="colBooksComments" prefWidth="262.0" resizable="false" text="Uwagi" />
+                        <TableColumn fx:id="colBooksID" prefWidth="161.0" resizable="false" text="ID" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+                  <GridPane alignment="CENTER" layoutX="300.0" layoutY="100.0" prefHeight="318.0" prefWidth="631.0" vgap="10.0">
+                     <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="331.0" minWidth="10.0" prefWidth="180.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="487.0" minWidth="10.0" prefWidth="451.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="84.0" minHeight="10.0" prefHeight="19.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="88.0" minHeight="10.0" prefHeight="46.0" valignment="TOP" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="87.0" minHeight="10.0" prefHeight="43.0" valignment="TOP" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="78.0" minHeight="10.0" prefHeight="44.0" valignment="TOP" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="113.0" minHeight="10.0" prefHeight="113.0" valignment="TOP" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label text="Nazwa przedmiotu">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="Tytuł podręcznika" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="47.0" text="Autorzy" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <TextArea fx:id="txtBooksBookTitle" prefHeight="75.0" prefWidth="465.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextArea fx:id="txtBooksComments" prefHeight="75.0" prefWidth="354.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <TextArea fx:id="txtBooksAuthors" prefHeight="75.0" prefWidth="354.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label text="Uwagi" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="Wydawnictwo" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <TextArea fx:id="txtBooksPublishingHouse" prefHeight="75.0" prefWidth="465.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="txtBooksCourseName" GridPane.columnIndex="1" />
+                     </children>
+                  </GridPane>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1230.0">
+                     <children>
+                        <Label text="Informacje o podręcznikach">
+                           <font>
+                              <Font name="System Bold Italic" size="30.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="338.0" layoutY="418.0" prefHeight="74.0" prefWidth="555.0" spacing="20.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#booksOnInsert" prefHeight="25.0" prefWidth="100.0" text="Dodaj" />
+                        <Button mnemonicParsing="false" onAction="#booksOnUpdate" prefWidth="100.0" text="Aktualizuj" />
+                        <Button mnemonicParsing="false" onAction="#booksOnDelete" prefWidth="100.0" text="Usuń" />
+                        <Button mnemonicParsing="false" onAction="#booksOnRefresh" prefWidth="100.0" text="Odśwież" />
+                     </children>
+                  </HBox>
+                  <TextField fx:id="txtBooksID" layoutX="31.0" layoutY="146.0" visible="false" />
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+      <Tab text="Tematy zajęć">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="553.0" prefWidth="700.0">
+               <children>
+                  <TableView fx:id="subjectsTableView" layoutY="466.0" prefHeight="306.0" prefWidth="1230.0" tableMenuButtonVisible="true">
+                     <columns>
+                        <TableColumn fx:id="colSubjectsDate" prefWidth="97.0" resizable="false" text="Data" />
+                        <TableColumn fx:id="colSubjectsNumber" prefWidth="86.0" resizable="false" text="Nr kol. zajęć" />
+                        <TableColumn fx:id="colSubjectsCourseName" prefWidth="134.0" resizable="false" text="Przedmiot" />
+                        <TableColumn fx:id="colSubjectsSubject" prefWidth="596.0" resizable="false" text="Temat zajęć edukacyjnych" />
+                        <TableColumn fx:id="colSubjectsPresent" prefWidth="74.0" resizable="false" text="Obecnych" />
+                        <TableColumn fx:id="colSubjectsAbsent" prefWidth="95.0" resizable="false" text="Nieobecnych" />
+                        <TableColumn fx:id="colSubjectsTeacher" prefWidth="147.0" resizable="false" text="Nauczyciel" />
+                        <TableColumn fx:id="colSubjectsID" prefWidth="97.0" resizable="false" text="ID" visible="false" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+                  <GridPane alignment="CENTER" layoutX="348.0" layoutY="100.0" prefHeight="283.0" prefWidth="536.0">
+                     <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="331.0" minWidth="10.0" prefWidth="234.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="487.0" minWidth="10.0" prefWidth="168.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="487.0" minWidth="10.0" prefWidth="160.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="84.0" minHeight="10.0" prefHeight="40.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="88.0" minHeight="10.0" prefHeight="40.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="116.0" minHeight="10.0" prefHeight="40.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="139.0" minHeight="10.0" prefHeight="50.0" valignment="TOP" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="139.0" minHeight="10.0" prefHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="139.0" minHeight="10.0" prefHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label text="Data">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="Nr kol. zajęć" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="47.0" text="Przedmiot" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="Temat zajęć edukacyjnych" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <TextArea fx:id="txtSubjectsSubject" prefHeight="61.0" prefWidth="411.0" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+                        <TextField fx:id="txtSubjectsNumber" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="txtSubjectsCourseName" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <DatePicker fx:id="dtpSubjectsDate" prefHeight="29.0" prefWidth="198.0" GridPane.columnIndex="1" />
+                        <Label text="Obecnych" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="Nieobecnych" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtSubjectsAbsent" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <TextField fx:id="txtSubjectsPresent" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                     </children>
+                  </GridPane>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1230.0">
+                     <children>
+                        <Label text="Realizacja programu nauczania">
+                           <font>
+                              <Font name="System Bold Italic" size="30.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="338.0" layoutY="392.0" prefHeight="74.0" prefWidth="555.0" spacing="20.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#subjectsOnInsert" prefHeight="25.0" prefWidth="100.0" text="Dodaj" />
+                        <Button mnemonicParsing="false" onAction="#subjectsOnUpdate" prefWidth="100.0" text="Aktualizuj" />
+                        <Button mnemonicParsing="false" onAction="#subjectsOnDelete" prefWidth="100.0" text="Usuń" />
+                        <Button mnemonicParsing="false" onAction="#subjectsOnRefresh" prefWidth="100.0" text="Odśwież" />
+                     </children>
+                  </HBox>
+                  <TextField fx:id="txtSubjectsID" layoutX="41.0" layoutY="111.0" visible="false" />
+                  <TextField fx:id="txtSubjectsTeacher" layoutX="39.0" layoutY="233.0" visible="false" />
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+      <Tab text="Wycieczki">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="553.0" prefWidth="700.0">
+               <children>
+                  <TableView fx:id="tripsTableView" layoutY="422.0" prefHeight="350.0" prefWidth="1230.0" tableMenuButtonVisible="true">
+                     <columns>
+                        <TableColumn fx:id="colTripsBegginingDate" prefWidth="130.0" resizable="false" text="Data rozpoczęcia" />
+                        <TableColumn fx:id="colTripsEndDate" prefWidth="130.0" resizable="false" text="Data zakończenia" />
+                        <TableColumn fx:id="colTripsDuration" prefWidth="79.0" resizable="false" text="Czas trwania" />
+                        <TableColumn fx:id="colTripsParticipants" prefWidth="123.0" resizable="false" text="Liczba uczestników" />
+                        <TableColumn fx:id="colTripsDestination" prefWidth="597.0" resizable="false" text="Dokąd i w jakim celu odbyła się wycieczka" />
+                        <TableColumn fx:id="colTripsTeacher" prefWidth="170.0" resizable="false" text="Nauczyciel" />
+                        <TableColumn fx:id="colTripsID" prefWidth="130.0" resizable="false" text="ID" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+                  <GridPane alignment="CENTER" layoutX="348.0" layoutY="100.0" prefHeight="245.0" prefWidth="536.0">
+                     <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="331.0" minWidth="10.0" prefWidth="198.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="487.0" minWidth="10.0" prefWidth="169.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="487.0" minWidth="10.0" prefWidth="169.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="84.0" minHeight="10.0" prefHeight="43.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="84.0" minHeight="10.0" prefHeight="43.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="88.0" minHeight="10.0" prefHeight="43.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="139.0" minHeight="10.0" prefHeight="74.0" valignment="TOP" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label text="Data rozpoczęcia">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="Liczba uczestników" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="Miejsce i cel wycieczki" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <TextArea fx:id="txtTripsDestination" prefHeight="61.0" prefWidth="411.0" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+                        <TextField fx:id="txtTripsParticipants" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <DatePicker fx:id="dtpTripsBegginingDate" prefHeight="29.0" prefWidth="198.0" GridPane.columnIndex="1" />
+                        <Label text="Data zakończenia" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <DatePicker fx:id="dtpTripsEndDate" prefHeight="29.0" prefWidth="198.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                     </children>
+                  </GridPane>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1230.0">
+                     <children>
+                        <Label text="Wycieczki szkolne">
+                           <font>
+                              <Font name="System Bold Italic" size="30.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="338.0" layoutY="349.0" prefHeight="74.0" prefWidth="555.0" spacing="20.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#tripsOnInsert" prefHeight="25.0" prefWidth="100.0" text="Dodaj" />
+                        <Button mnemonicParsing="false" onAction="#tripsOnUpdate" prefWidth="100.0" text="Aktualizuj" />
+                        <Button mnemonicParsing="false" onAction="#tripsOnDelete" prefWidth="100.0" text="Usuń" />
+                        <Button mnemonicParsing="false" onAction="#tripsOnRefresh" prefWidth="100.0" text="Odśwież" />
+                     </children>
+                  </HBox>
+                  <TextField fx:id="txtTripsID" layoutX="45.0" layoutY="125.0" visible="false" />
+                  <TextField fx:id="txtTripsDuration" layoutX="43.0" layoutY="170.0" visible="false" />
+                  <TextField fx:id="txtTripsTeacher" layoutX="41.0" layoutY="210.0" visible="false" />
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+      <Tab text="Wydarzenia">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="553.0" prefWidth="700.0">
+               <children>
+                  <TableView fx:id="eventsTableView" layoutY="354.0" prefHeight="418.0" prefWidth="1230.0" tableMenuButtonVisible="true">
+                     <columns>
+                        <TableColumn fx:id="colEventsDate" prefWidth="343.0" resizable="false" text="Data" />
+                        <TableColumn fx:id="colEventsInfo" prefWidth="885.0" resizable="false" text="Informacja o przebiegu wydarzenia" />
+                        <TableColumn fx:id="colEventsID" prefWidth="343.0" resizable="false" text="ID" visible="false" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+                  <GridPane alignment="CENTER" layoutX="256.0" layoutY="100.0" prefHeight="179.0" prefWidth="719.0">
+                     <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="331.0" minWidth="10.0" prefWidth="304.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="487.0" minWidth="10.0" prefWidth="198.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="487.0" minWidth="10.0" prefWidth="169.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="84.0" minHeight="10.0" prefHeight="40.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="139.0" minHeight="10.0" prefHeight="50.0" valignment="TOP" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label text="Data">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="Informacja o przebiegu wydarzenia" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <TextArea fx:id="txtEventsInfo" prefHeight="61.0" prefWidth="411.0" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+                        <DatePicker fx:id="dtpEventsDate" prefHeight="29.0" prefWidth="198.0" GridPane.columnIndex="1" />
+                     </children>
+                  </GridPane>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1230.0">
+                     <children>
+                        <Label text="Ważniejsze wydarzenia z życia klasy">
+                           <font>
+                              <Font name="System Bold Italic" size="30.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="338.0" layoutY="280.0" prefHeight="74.0" prefWidth="555.0" spacing="20.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#eventsOnInsert" prefHeight="25.0" prefWidth="100.0" text="Dodaj" />
+                        <Button mnemonicParsing="false" onAction="#eventsOnUpdate" prefWidth="100.0" text="Aktualizuj" />
+                        <Button mnemonicParsing="false" onAction="#eventsOnDelete" prefWidth="100.0" text="Usuń" />
+                        <Button mnemonicParsing="false" onAction="#eventsOnRefresh" prefWidth="100.0" text="Odśwież" />
+                     </children>
+                  </HBox>
+                  <TextField fx:id="txtEventsID" layoutX="43.0" layoutY="190.0" visible="false" />
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+      <Tab text="Osiągnięcia, pochwały, nagany">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="553.0" prefWidth="700.0">
+               <children>
+                  <TableView fx:id="additionalBehaviourTableView" layoutY="410.0" prefHeight="362.0" prefWidth="1230.0" tableMenuButtonVisible="true">
+                     <columns>
+                        <TableColumn fx:id="colAdditionalBehaviourStudentName" prefWidth="147.0" resizable="false" text="Imię i nazwisko ucznia" />
+                        <TableColumn fx:id="colAdditionalBehaviourDate" prefWidth="111.0" resizable="false" text="Data wpisu" />
+                        <TableColumn fx:id="colAdditionalBehaviourKind" prefWidth="127.0" resizable="false" text="Rodzaj informacji" />
+                        <TableColumn fx:id="colAdditionalBehaviourInfo" prefWidth="674.0" resizable="false" text="Treść" />
+                        <TableColumn fx:id="colAdditionalBehaviourTeacher" prefWidth="170.0" resizable="false" text="Wpisujący" />
+                        <TableColumn fx:id="colAdditionalBehaviourID" prefWidth="147.0" resizable="false" text="ID" visible="false" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+                  <GridPane alignment="CENTER" layoutX="344.0" layoutY="106.0" prefHeight="230.0" prefWidth="543.0">
+                     <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="331.0" minWidth="10.0" prefWidth="203.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="487.0" minWidth="10.0" prefWidth="219.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="487.0" minWidth="10.0" prefWidth="121.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="84.0" minHeight="10.0" prefHeight="40.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="84.0" minHeight="10.0" prefHeight="40.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="84.0" minHeight="10.0" prefHeight="40.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="139.0" minHeight="10.0" prefHeight="50.0" valignment="TOP" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label layoutX="144.0" layoutY="40.0" text="Imię i nazwisko ucznia">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="Data wpisu" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="Treść" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <TextArea fx:id="txtAdditionalBehaviourInfo" prefHeight="61.0" prefWidth="411.0" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+                        <DatePicker fx:id="dtpAdditionalBehaviourDate" prefHeight="29.0" prefWidth="244.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="txtAdditionalBehaviourStudentName" GridPane.columnIndex="1" />
+                        <Label text="Rodzaj" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtAdditionalBehaviourKind" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                     </children>
+                  </GridPane>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1230.0">
+                     <children>
+                        <Label text="Informacje o zachowaniu uczniów">
+                           <font>
+                              <Font name="System Bold Italic" size="30.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="338.0" layoutY="336.0" prefHeight="74.0" prefWidth="555.0" spacing="20.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#additionalBehaviourOnInsert" prefHeight="25.0" prefWidth="100.0" text="Dodaj" />
+                        <Button mnemonicParsing="false" onAction="#additionalBehaviourOnUpdate" prefWidth="100.0" text="Aktualizuj" />
+                        <Button mnemonicParsing="false" onAction="#additionalBehaviourOnDelete" prefWidth="100.0" text="Usuń" />
+                        <Button mnemonicParsing="false" onAction="#additionalBehaviourOnRefresh" prefWidth="100.0" text="Odśwież" />
+                     </children>
+                  </HBox>
+                  <TextField fx:id="txtAdditionalBehaviourID" layoutX="55.0" layoutY="147.0" visible="false" />
+                  <TextField fx:id="txtAdditionalBehaviourTeacher" layoutX="53.0" layoutY="189.0" visible="false" />
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+      <Tab text="Obecność">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="553.0" prefWidth="700.0">
+               <children>
+                  <TableView fx:id="attendanceTableView" layoutX="87.0" layoutY="410.0" prefHeight="362.0" prefWidth="1042.0" tableMenuButtonVisible="true">
+                     <columns>
+                        <TableColumn fx:id="colAttendanceStudentName" prefWidth="145.0" resizable="false" text="Imię i nazwisko ucznia" />
+                        <TableColumn fx:id="colAttendanceDate" prefWidth="175.0" resizable="false" text="Data sprawdzenia obecności" />
+                        <TableColumn fx:id="colAttendanceCourseName" prefWidth="137.0" resizable="false" text="Przedmiot" />
+                        <TableColumn fx:id="colAttendanceAttendance" prefWidth="234.0" resizable="false" text="Obecność" />
+                        <TableColumn fx:id="colAttendancePreaparation" prefWidth="217.0" resizable="false" text="Przygotowanie do zajęć" />
+                        <TableColumn fx:id="colAttendanceTeacher" prefWidth="132.0" resizable="false" text="Sprawdzający" />
+                        <TableColumn fx:id="colAttendanceID" prefWidth="145.0" resizable="false" text="ID" visible="false" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1230.0">
+                     <children>
+                        <Label text="Obecność">
+                           <font>
+                              <Font name="System Bold Italic" size="30.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <GridPane layoutX="14.0" layoutY="100.0" prefHeight="81.0" prefWidth="793.0">
+                     <columnConstraints>
+                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="331.0" minWidth="10.0" prefWidth="123.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="467.0" minWidth="10.0" prefWidth="86.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="467.0" minWidth="10.0" prefWidth="145.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="467.0" minWidth="10.0" prefWidth="131.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="467.0" minWidth="10.0" prefWidth="90.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="467.0" minWidth="10.0" prefWidth="61.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="467.0" minWidth="10.0" prefWidth="87.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="467.0" minWidth="10.0" prefWidth="73.0" />
+                        <ColumnConstraints />
+                        <ColumnConstraints maxWidth="0.0" minWidth="0.0" prefWidth="0.0" />
+                        <ColumnConstraints maxWidth="0.0" minWidth="0.0" prefWidth="0.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label text="1. Jakub Benduch">
+                           <font>
+                              <Font name="System Bold Italic" size="11.0" />
+                           </font>
+                        </Label>
+                        <Label text="2. Ewelina Grzelak" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold Italic" size="11.0" />
+                           </font>
+                        </Label>
+                        <Label text="3. Jan Kowalski" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold Italic" size="11.0" />
+                           </font>
+                        </Label>
+                        <RadioButton fx:id="rbAttendance1" mnemonicParsing="false" selected="true" text="Obecność" GridPane.columnIndex="1">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="tgAttendance1" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="rbAbsenceUnexcused1" mnemonicParsing="false" text="Nieobecność (nieusp.)" toggleGroup="$tgAttendance1" GridPane.columnIndex="2" />
+                        <RadioButton fx:id="rbAttendance2" mnemonicParsing="false" selected="true" text="Obecność" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="tgAttendance2" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="rbAttendance3" mnemonicParsing="false" selected="true" text="Obecność" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="tgAttendance3" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="rbAbsenceUnexcused2" mnemonicParsing="false" text="Nieobecność (nieusp.)" toggleGroup="$tgAttendance2" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <RadioButton fx:id="rbAbsenceUnexcused3" mnemonicParsing="false" text="Nieobecność (nieusp.)" toggleGroup="$tgAttendance3" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <RadioButton fx:id="rbAbsenceJustified1" mnemonicParsing="false" text="Nieobecność (usp.)" toggleGroup="$tgAttendance1" GridPane.columnIndex="3" />
+                        <RadioButton fx:id="rbAbsenceJustified2" mnemonicParsing="false" text="Nieobecność (usp.)" toggleGroup="$tgAttendance2" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <RadioButton fx:id="rbAbsenceJustified3" mnemonicParsing="false" text="Nieobecność (usp.)" toggleGroup="$tgAttendance3" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                        <RadioButton fx:id="rbLate1" mnemonicParsing="false" text="Spóźnienie" toggleGroup="$tgAttendance1" GridPane.columnIndex="4" />
+                        <RadioButton fx:id="rbLate2" mnemonicParsing="false" text="Spóźnienie" toggleGroup="$tgAttendance2" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                        <RadioButton fx:id="rbLate3" mnemonicParsing="false" text="Spóźnienie" toggleGroup="$tgAttendance3" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                        <RadioButton fx:id="rbPrepared1" mnemonicParsing="false" selected="true" text="Przyg." GridPane.columnIndex="5">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="tgPreparation1" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="rbPrepared2" mnemonicParsing="false" selected="true" text="Przyg." GridPane.columnIndex="5" GridPane.rowIndex="1">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="tgPreparation2" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="rbPrepared3" mnemonicParsing="false" selected="true" text="Przyg." GridPane.columnIndex="5" GridPane.rowIndex="2">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="tgPreparation3" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="rbUnprepared1" mnemonicParsing="false" text="Nieprzyg." toggleGroup="$tgPreparation1" GridPane.columnIndex="6" />
+                        <RadioButton fx:id="rbUnprepared2" mnemonicParsing="false" text="Nieprzyg." toggleGroup="$tgPreparation2" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+                        <RadioButton fx:id="rbUnprepared3" mnemonicParsing="false" text="Nieprzyg." toggleGroup="$tgPreparation3" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+                        <Button mnemonicParsing="false" onAction="#attendanceOnUpdate1" prefHeight="25.0" prefWidth="72.0" text="Aktualizuj" GridPane.columnIndex="7" />
+                        <Button mnemonicParsing="false" onAction="#attendanceOnUpdate2" prefHeight="25.0" prefWidth="72.0" text="Aktualizuj" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+                        <Button mnemonicParsing="false" onAction="#attendanceOnUpdate3" prefHeight="25.0" prefWidth="72.0" text="Aktualizuj" GridPane.columnIndex="7" GridPane.rowIndex="2" />
+                     </children>
+                  </GridPane>
+                  <HBox alignment="CENTER" layoutX="338.0" layoutY="336.0" prefHeight="74.0" prefWidth="555.0" spacing="20.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#attendanceOnInsert" prefHeight="25.0" prefWidth="100.0" text="Dodaj" />
+                        <Button mnemonicParsing="false" onAction="#attendanceOnDelete" prefWidth="100.0" text="Usuń" />
+                        <Button mnemonicParsing="false" onAction="#attendanceOnRefresh" prefWidth="100.0" text="Odśwież" />
+                     </children>
+                  </HBox>
+                  <GridPane layoutX="864.0" layoutY="100.0" prefHeight="82.0" prefWidth="306.0">
+                    <columnConstraints>
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="147.0" minWidth="10.0" prefWidth="94.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="212.0" minWidth="10.0" prefWidth="212.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Data">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="Przedmiot" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtAttendanceCourseName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <DatePicker fx:id="dtpAttendanceDate" prefHeight="29.0" prefWidth="219.0" GridPane.columnIndex="1" />
+                     </children>
+                  </GridPane>
+                  <TextField fx:id="txtAttendanceID" layoutX="969.0" layoutY="217.0" visible="false" />
+                  <TextField fx:id="txtAttendanceTeacher" layoutX="969.0" layoutY="257.0" visible="false" />
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+      <Tab text="Nauczyciele">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="553.0" prefWidth="700.0">
+               <children>
+                  <TableView fx:id="teachersTableView" layoutX="405.0" layoutY="279.0" prefHeight="492.0" prefWidth="421.0" tableMenuButtonVisible="true">
+                     <columns>
+                        <TableColumn fx:id="colTeachersTeacherName" prefWidth="183.0" resizable="false" text="Imię i nazwisko nauczyciela" />
+                        <TableColumn fx:id="colTeachersCourseName" prefWidth="236.0" resizable="false" text="Nazwa prowadzonego przedmiotu" />
+                        <TableColumn fx:id="colTeachersID" prefWidth="1151.0" resizable="false" text="ID" visible="false" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+                  <GridPane alignment="CENTER" layoutX="347.0" layoutY="100.0" prefHeight="103.0" prefWidth="536.0">
+                     <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="331.0" minWidth="10.0" prefWidth="284.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="487.0" minWidth="10.0" prefWidth="252.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="84.0" minHeight="10.0" prefHeight="40.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="139.0" minHeight="10.0" prefHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label text="Imię i nazwisko nauczyciela">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="Nazwa prowadzonego przedmiotu" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtTeachersTeacherName" GridPane.columnIndex="1" />
+                        <TextField fx:id="txtTeachersCourseName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                     </children>
+                  </GridPane>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1230.0">
+                     <children>
+                        <Label text="Nauczyciele">
+                           <font>
+                              <Font name="System Bold Italic" size="30.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="338.0" layoutY="205.0" prefHeight="74.0" prefWidth="555.0" spacing="20.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#teachersOnInsert" prefHeight="25.0" prefWidth="100.0" text="Dodaj" />
+                        <Button mnemonicParsing="false" onAction="#teachersOnUpdate" prefWidth="100.0" text="Aktualizuj" />
+                        <Button mnemonicParsing="false" onAction="#teachersOnDelete" prefWidth="100.0" text="Usuń" />
+                        <Button mnemonicParsing="false" onAction="#teachersOnRefresh" prefWidth="100.0" text="Odśwież" />
+                     </children>
+                  </HBox>
+                  <TextField fx:id="txtTeachersID" layoutX="43.0" layoutY="190.0" visible="false" />
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+      <Tab text="Oceny">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="553.0" prefWidth="700.0">
+               <children>
+                  <TableView fx:id="marksTableView" layoutX="94.0" layoutY="524.0" prefHeight="249.0" prefWidth="1043.0" tableMenuButtonVisible="true">
+                     <columns>
+                        <TableColumn fx:id="colMarksStudentName" prefWidth="150.0" resizable="false" text="Imię i nazwisko ucznia" />
+                        <TableColumn fx:id="colMarksCourseName" prefWidth="141.0" resizable="false" text="Przedmiot" />
+                        <TableColumn fx:id="colMarksTest1" prefWidth="125.0" resizable="false" text="Sprawdzian" />
+                        <TableColumn fx:id="colMarksTest2" prefWidth="125.0" resizable="false" text="Test" />
+                        <TableColumn fx:id="colMarksQuiz" prefWidth="125.0" resizable="false" text="Kartkówka" />
+                        <TableColumn fx:id="colMarksOral" prefWidth="125.0" resizable="false" text="Odp. ustna" />
+                        <TableColumn fx:id="colMarksPaper" prefWidth="125.0" resizable="false" text="Referat" />
+                        <TableColumn fx:id="colMarksActivity" prefWidth="125.0" resizable="false" text="Aktywność" />
+                        <TableColumn fx:id="colMarksID" minWidth="0.0" prefWidth="0.0" resizable="false" text="ID" visible="false" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+                  <GridPane alignment="CENTER" layoutX="33.0" layoutY="112.0" prefHeight="240.0" prefWidth="468.0" vgap="10.0">
+                     <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="331.0" minWidth="10.0" prefWidth="185.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="487.0" minWidth="10.0" prefWidth="283.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="84.0" minHeight="10.0" prefHeight="60.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="139.0" minHeight="10.0" prefHeight="60.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="139.0" minHeight="10.0" prefHeight="60.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="139.0" minHeight="10.0" prefHeight="60.0" valignment="CENTER" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label text="Imię i nazwisko ucznia">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="Przedmiot" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtMarksStudentName" GridPane.columnIndex="1" />
+                        <TextField fx:id="txtMarksCourseName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label layoutX="114.0" layoutY="73.0" text="Sprawdzian" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="Test" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <TextArea fx:id="txtMarksTest1" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextArea fx:id="txtMarksTest2" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </GridPane>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1230.0">
+                     <children>
+                        <Label text="Oceny">
+                           <font>
+                              <Font name="System Bold Italic" size="30.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="338.0" layoutY="407.0" prefHeight="74.0" prefWidth="555.0" spacing="20.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#marksOnInsert" prefHeight="25.0" prefWidth="100.0" text="Dodaj" />
+                        <Button mnemonicParsing="false" onAction="#marksOnUpdate" prefWidth="100.0" text="Aktualizuj" />
+                        <Button mnemonicParsing="false" onAction="#marksOnDelete" prefWidth="100.0" text="Usuń" />
+                        <Button mnemonicParsing="false" onAction="#marksOnRefresh" prefWidth="100.0" text="Odśwież" />
+                     </children>
+                  </HBox>
+                  <TextField fx:id="txtTeachersID1" layoutX="43.0" layoutY="190.0" visible="false" />
+                  <GridPane alignment="CENTER" layoutX="624.0" layoutY="112.0" prefHeight="240.0" prefWidth="468.0" vgap="10.0">
+                     <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="331.0" minWidth="10.0" prefWidth="185.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="487.0" minWidth="10.0" prefWidth="283.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="84.0" minHeight="10.0" prefHeight="60.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="139.0" minHeight="10.0" prefHeight="60.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="139.0" minHeight="10.0" prefHeight="60.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="139.0" minHeight="10.0" prefHeight="60.0" valignment="CENTER" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label text="Kartkówka">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="Odp. ustna" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="114.0" layoutY="73.0" text="Referat" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="Aktywność" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <TextArea fx:id="txtMarksPaper" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextArea fx:id="txtMarksActivity" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextArea fx:id="txtMarksQuiz" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
+                        <TextArea fx:id="txtMarksOral" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </GridPane>
+                  <TextField fx:id="txtMarksID" layoutX="1018.0" layoutY="407.0" visible="false" />
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+      <Tab text="Untitled Tab 1">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <GridPane layoutX="108.0" layoutY="35.0" prefHeight="122.0" prefWidth="458.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label text="ID" />
+                        <Label layoutX="10.0" layoutY="17.0" text="First Name" GridPane.rowIndex="1" />
+                        <Label layoutX="10.0" layoutY="47.0" text="Last Name" GridPane.rowIndex="2" />
+                        <Label layoutX="10.0" layoutY="77.0" text="Birth Date" GridPane.rowIndex="3" />
+                        <TextField fx:id="txtId" disable="true" editable="false" GridPane.columnIndex="1" />
+                        <TextField fx:id="txtFirstName" layoutX="68.0" layoutY="13.0" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="1" />
+                        <TextArea fx:id="txtLastName" prefHeight="28.0" prefWidth="400.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+                        <DatePicker fx:id="dtpBirthDate" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                     </children>
+                  </GridPane>
+                  <HBox alignment="CENTER" layoutX="99.0" layoutY="224.0" prefHeight="49.0" prefWidth="458.0" spacing="5.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#onInsert" text="Insert" />
+                        <Button layoutX="219.0" layoutY="32.0" mnemonicParsing="false" onAction="#onUpdate" text="Update" />
+                        <Button layoutX="245.0" layoutY="32.0" mnemonicParsing="false" onAction="#onDelete" text="Delete" />
+                        <Button layoutX="271.0" layoutY="32.0" mnemonicParsing="false" onAction="#onRefresh" text="Refresh" />
+                     </children>
+                  </HBox>
+                  <TableView fx:id="tableView" layoutX="52.0" layoutY="325.0" prefHeight="240.0" prefWidth="458.0">
+                     <columns>
+                        <TableColumn fx:id="colId" prefWidth="170.0" style="-fx-alignment: CENTER;" text="ID" />
+                        <TableColumn fx:id="colFirstName" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: CENTER;" text="FIRST NAME" />
+                        <TableColumn fx:id="colLastName" prefWidth="75.0" style="-fx-alignment: CENTER;" text="LAST NAME" />
+                        <TableColumn fx:id="colBirthDate" prefWidth="75.0" style="-fx-alignment: CENTER;" text="BIRTH DATE" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+   </tabs>
+</TabPane>
